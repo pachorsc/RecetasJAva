@@ -27,8 +27,8 @@ public class BD {
     }
     
     public String insertarUsuarios(String nombre, String contrasenia){
-        String s="";
-        s="insert into usuarios values ('"+ nombre +"', "+ contrasenia +", )";
+        String s ="";
+        s = "insert into usuarios values ('"+ nombre +"', "+ contrasenia +", )";
         return s;
     }
 }
