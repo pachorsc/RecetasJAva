@@ -41,9 +41,7 @@ public class Eleccion extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1240, 713));
         setMinimumSize(new java.awt.Dimension(1240, 713));
-        setPreferredSize(new java.awt.Dimension(1240, 713));
         setResizable(false);
         setSize(new java.awt.Dimension(1240, 713));
 
@@ -92,24 +90,15 @@ public class Eleccion extends javax.swing.JFrame {
 
         Tabla_Receta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"ss", "ss", "ss"},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
             }
-        });
+        ));
+        Tabla_Receta.setColumnSelectionAllowed(true);
         jScrollPane2.setViewportView(Tabla_Receta);
+        Tabla_Receta.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
         jButton3.setText("Seleccionar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {

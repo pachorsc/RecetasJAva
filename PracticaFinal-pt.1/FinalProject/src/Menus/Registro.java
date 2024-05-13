@@ -4,7 +4,7 @@
  */
 package Menus;
 import javax.swing.JOptionPane;
-
+import finalproject.BD;
 /**
  *
  * @author Admin
@@ -187,7 +187,10 @@ public class Registro extends javax.swing.JFrame {
                         "Algun espacio está vacio",
                         "Error",
                     JOptionPane.ERROR_MESSAGE);
-        } 
+        } else {
+            String meter = "insert into usuarios values ('"+ usuario +"', "+ contraseña +", )";
+            
+        }
         
     }//GEN-LAST:event_Boton_RegistrarseActionPerformed
 

@@ -23,6 +23,7 @@ public class BD {
         System.out.println("Conexion establecida");
         ResultSet rs = st.executeQuery(consulta);
         
+        
         con.close();
     }
     
