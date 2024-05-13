@@ -12,6 +12,7 @@ public class FinalProject {
         Eleccion menu_prin = new Eleccion();
         menu_prin.setVisible(true);
         menu_prin.setLocationRelativeTo(null);
+        
     }
     
 }
