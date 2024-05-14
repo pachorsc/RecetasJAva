@@ -60,7 +60,7 @@ public class BD {
     }
     
     static public String insertar_usu(String usu ,String cont){
-      String consu = "insert into usuarios values ('"+ usu +"', '"+ cont +"', 0)";
+      String consu = "insert into usuarios (nombre, contraseña) values ('"+ usu +"', '"+ cont +"')";
       return consu;
     }
     static public String select_usu(String usu){
