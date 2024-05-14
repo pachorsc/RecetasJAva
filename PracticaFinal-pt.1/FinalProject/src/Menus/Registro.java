@@ -5,6 +5,9 @@
 package Menus;
 import javax.swing.JOptionPane;
 import finalproject.BD;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author Admin
@@ -187,9 +190,23 @@ public class Registro extends javax.swing.JFrame {
                         "Algun espacio está vacio",
                         "Error",
                     JOptionPane.ERROR_MESSAGE);
-        } else {
-            String meter = "insert into usuarios values ('"+ usuario +"', "+ contraseña +", )";
+        } else if(contraseña.equals(contraseña2)){
+            //meter en base de datso
+            BD conexion = new BD();
+            try {
+                conexion.basedatos(conexion.insert(usuario, contraseña));
+                
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+            }
             
+        } else{
+            JOptionPane.showMessageDialog(this, 
+                        "contraseñas no coinciden",
+                        "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }
         
     }//GEN-LAST:event_Boton_RegistrarseActionPerformed
