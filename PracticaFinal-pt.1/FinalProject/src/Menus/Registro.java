@@ -194,13 +194,36 @@ public class Registro extends javax.swing.JFrame {
             //meter en base de datso
             BD conexion = new BD();
             try {
-                conexion.basedatos(conexion.insert(usuario, contraseña));
+                //si ya existe en la base de datos
+                if (conexion.coincide(conexion.count_usu(usuario))) {
+                    JOptionPane.showMessageDialog(this, 
+                        "Usuario ya Existente",
+                        "Error",
+                    JOptionPane.ERROR_MESSAGE);                    
+                } else {
+                    try {
+                    //meter en la base de datos 
+                    
+                        conexion.basedatos(conexion.insert(usuario, contraseña));
+
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    Registrado_Usuario V1 = new Registrado_Usuario();
+                    V1.setVisible(true);
+                    V1.setLocationRelativeTo(null);
+                    this.setVisible(false);
+                }
                 
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
                 Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
+            
             
         } else{
             JOptionPane.showMessageDialog(this, 
