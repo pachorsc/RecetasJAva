@@ -204,7 +204,7 @@ public class Registro extends javax.swing.JFrame {
                     try {
                     //meter en la base de datos 
                     
-                        conexion.basedatos(conexion.insert(usuario, contraseña));
+                        conexion.basedatos(conexion.insertar_usu(usuario, contraseña));
 
                     } catch (ClassNotFoundException ex) {
                         Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
@@ -242,7 +242,14 @@ public class Registro extends javax.swing.JFrame {
     }//GEN-LAST:event_Boton_ir_Iniciar_SActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Eleccion V3 = new Eleccion();
+        Eleccion V3 = null;
+        try {
+            V3 = new Eleccion();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+        }
         V3.setVisible(true);
         V3.setLocationRelativeTo(null);
         this.setVisible(false);

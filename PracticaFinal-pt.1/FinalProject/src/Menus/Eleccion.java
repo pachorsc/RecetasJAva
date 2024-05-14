@@ -4,6 +4,11 @@
  */
 package Menus;
 
+import java.sql.*;
+import finalproject.BD;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -16,21 +21,38 @@ public class Eleccion extends javax.swing.JFrame {
     /**
      * Creates new form Eleccion
      */
-    public Eleccion() {
+    public Eleccion() throws ClassNotFoundException, SQLException {
         initComponents();
+        String url = "jdbc:oracle:thin:@//localhost:1521/xe";
+        String username = "aula";
+        String pass = "aula";
+        Class.forName("oracle.jdbc.driver.OracleDriver");
+        Connection con = DriverManager.getConnection(url, username, pass);
+        Statement st = con.createStatement();
         
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Nombre");
-        model.addColumn("Duracion");
-        model.addColumn("Descripción");
+        model.addColumn("autor");
+        model.addColumn("pasos");
         Tabla_Receta.setModel(model);
         
+        //limite del estring es el count de la recetas totales
         String datos[] = new String[3];
+        //no llena porque no hay recetas
         String consu = "select * from recetas";
         
+        ResultSet rs = st.executeQuery(consu);
+        while(rs.next()){//Se hace el llenado de la tabla con los datos que se obtienen  de la consulta
+            datos[0] = rs.getString(1);
+            datos[1] = rs.getString(2);
+            datos[2] = rs.getString(3);
+            model.addRow(datos);
+        }
+        
+        Tabla_Receta.setModel(model);
         
         
-        
+        con.close();
     }
 
     /**
@@ -249,7 +271,13 @@ public class Eleccion extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Eleccion().setVisible(true);
+                try {
+                    new Eleccion().setVisible(true);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Eleccion.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Eleccion.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

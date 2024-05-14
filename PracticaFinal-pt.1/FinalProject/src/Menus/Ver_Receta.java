@@ -4,6 +4,10 @@
  */
 package Menus;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Admin
@@ -110,14 +114,28 @@ public class Ver_Receta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Eleccion V1 = new Eleccion();
+        Eleccion V1 = null;
+        try {
+            V1 = new Eleccion();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Ver_Receta.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Ver_Receta.class.getName()).log(Level.SEVERE, null, ex);
+        }
         V1.setVisible(true);
         V1.setLocationRelativeTo(null);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        Eleccion V3 = new Eleccion();
+        Eleccion V3 = null;
+        try {
+            V3 = new Eleccion();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Ver_Receta.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Ver_Receta.class.getName()).log(Level.SEVERE, null, ex);
+        }
         V3.setVisible(true);
         V3.setLocationRelativeTo(null);
         this.setVisible(false);

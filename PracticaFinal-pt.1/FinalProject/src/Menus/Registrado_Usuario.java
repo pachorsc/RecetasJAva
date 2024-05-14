@@ -4,6 +4,9 @@
  */
 package Menus;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -217,7 +220,14 @@ public class Registrado_Usuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        Eleccion V3 = new Eleccion();
+        Eleccion V3 = null;
+        try {
+            V3 = new Eleccion();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Registrado_Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Registrado_Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
         V3.setVisible(true);
         V3.setLocationRelativeTo(null);
         this.setVisible(false);

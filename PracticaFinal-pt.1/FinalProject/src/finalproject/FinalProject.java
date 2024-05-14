@@ -2,13 +2,14 @@
 package finalproject;
 
 import Menus.*;
+import java.sql.SQLException;
 
 
 public class FinalProject {
     static String usuario_Ini= "";
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
         
         Eleccion menu_prin = new Eleccion();
         menu_prin.setVisible(true);

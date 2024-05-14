@@ -29,7 +29,7 @@ CREATE TABLE RECETA_ETIQUETA(
     CONSTRAINT pk_re_et primary key(receta, etiqueta)
 );
 
-insert into USUARIOS values ('ADMIN', ADMIN, 1);
+insert into USUARIOS values ('ADMIN', 'ADMIN', 1);
 
 insert into ETIQUETAS (nombre) values ('Desayuno');
 insert into ETIQUETAS (nombre) values ('Almuerzo');
@@ -39,5 +39,8 @@ insert into ETIQUETAS (nombre) values ('Salado');
 insert into ETIQUETAS (nombre) values ('Carne');
 insert into ETIQUETAS (nombre) values ('Vegetariano');
 insert into ETIQUETAS (nombre) values ('Sano');
+
+insert into recetas (nombre, autor , ingredientes, pasos) values('huevo', 'ADMIN', 'hueso', 'no se');
+insert into recetas (nombre, autor , ingredientes, pasos) values('hue', 'ADMIN', 'hueso', 'no se');
 
 commit;

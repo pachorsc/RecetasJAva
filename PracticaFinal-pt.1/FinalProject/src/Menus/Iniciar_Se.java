@@ -212,7 +212,14 @@ public class Iniciar_Se extends javax.swing.JFrame {
     }//GEN-LAST:event_Boton_EntrarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Eleccion V3 = new Eleccion();
+        Eleccion V3 = null;
+        try {
+            V3 = new Eleccion();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Iniciar_Se.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Iniciar_Se.class.getName()).log(Level.SEVERE, null, ex);
+        }
         V3.setVisible(true);
         V3.setLocationRelativeTo(null);
         this.setVisible(false);
