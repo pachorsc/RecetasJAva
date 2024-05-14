@@ -5,34 +5,31 @@ import java.sql.*;
 
 
 public class BD {
-    //ejecutar queris
-    static public void basedatos(String n) throws ClassNotFoundException, SQLException {
+    //Conectar base de datos
+    static public Connection Conectar() throws ClassNotFoundException, SQLException{
         String url = "jdbc:oracle:thin:@//localhost:1521/xe";
         String username = "aula";
         String pass = "aula";
         Class.forName("oracle.jdbc.driver.OracleDriver");
         Connection con = DriverManager.getConnection(url, username, pass);
-        Statement st = con.createStatement();
+        return con;
+    }
+    
+    //Ejecutar Querys
+    static public void basedatos(String n) throws ClassNotFoundException, SQLException {
+        Statement st = Conectar().createStatement();
 
         String consulta  = n;
          
         System.out.println("Conexion establecida");
         ResultSet rs = st.executeQuery(consulta);
         
-        
-        con.close();
+        Conectar().close();
     }
-
     
-    
-    //booleano si coincide 
+    //Booleano si coincide
     static public boolean coincide(String n) throws ClassNotFoundException, SQLException {
-        String url = "jdbc:oracle:thin:@//localhost:1521/xe";
-        String username = "aula";
-        String pass = "aula";
-        Class.forName("oracle.jdbc.driver.OracleDriver");
-        Connection con = DriverManager.getConnection(url, username, pass);
-        Statement st = con.createStatement();
+        Statement st = Conectar().createStatement();
 
         String consulta  = n;
          
@@ -44,11 +41,23 @@ public class BD {
             existe = true;
         }
         
-        con.close();
+        Conectar().close();
         
         return existe;
     }
     
+    //Devuelve un cursor con un select
+    static public ResultSet datos(String n) throws ClassNotFoundException, SQLException {
+        Statement st = Conectar().createStatement();
+
+        String consulta  = n;
+         
+        System.out.println("Conexion establecida");
+        ResultSet rs = st.executeQuery(consulta);
+        
+        Conectar().close();
+        return rs;
+    }
     
     static public String insertar_usu(String usu ,String cont){
       String consu = "insert into usuarios values ('"+ usu +"', '"+ cont +"', 0)";

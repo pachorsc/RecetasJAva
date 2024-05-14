@@ -23,12 +23,7 @@ public class Eleccion extends javax.swing.JFrame {
      */
     public Eleccion() throws ClassNotFoundException, SQLException {
         initComponents();
-        String url = "jdbc:oracle:thin:@//localhost:1521/xe";
-        String username = "aula";
-        String pass = "aula";
-        Class.forName("oracle.jdbc.driver.OracleDriver");
-        Connection con = DriverManager.getConnection(url, username, pass);
-        Statement st = con.createStatement();
+        BD elegir = new BD();
         
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Nombre");
@@ -39,9 +34,8 @@ public class Eleccion extends javax.swing.JFrame {
         //limite del estring es el count de la recetas totales
         String datos[] = new String[3];
         //no llena porque no hay recetas
-        String consu = "select * from recetas";
         
-        ResultSet rs = st.executeQuery(consu);
+        ResultSet rs = elegir.datos(elegir.select_receta());
         while(rs.next()){//Se hace el llenado de la tabla con los datos que se obtienen  de la consulta
             datos[0] = rs.getString(1);
             datos[1] = rs.getString(2);
@@ -51,8 +45,7 @@ public class Eleccion extends javax.swing.JFrame {
         
         Tabla_Receta.setModel(model);
         
-        
-        con.close();
+       
     }
 
     /**
