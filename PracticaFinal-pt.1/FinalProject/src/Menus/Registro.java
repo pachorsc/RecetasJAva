@@ -195,7 +195,7 @@ public class Registro extends javax.swing.JFrame {
             BD conexion = new BD();
             try {
                 //si ya existe en la base de datos
-                if (conexion.coincide(conexion.count_usu(usuario))) {
+                if (conexion.coincide(conexion.select_usu(usuario))) {
                     JOptionPane.showMessageDialog(this, 
                         "Usuario ya Existente",
                         "Error",

@@ -2,20 +2,18 @@ package finalproject;
 
 public class Usuario {
     private String nombre;
+    private String contrasenia;
     private int rol;
-    
-    public Usuario(){
-        String nombre="";
+        
+    public Usuario(String nom, String con){
+        String nombre=nom;
+        String contrasenia=con;
         int rol=0;
     }
     
-    public Usuario(String nom){
+     public Usuario(String nom, String con, int n){
         String nombre=nom;
-        int rol=0;
-    }
-    
-     public Usuario(String nom, int n){
-        String nombre=nom;
+        String contrasenia=con;
         int rol=1;
     }
     
@@ -27,6 +25,14 @@ public class Usuario {
         this.nombre = nombre;
     }
 
+    public String getContrasenia() {
+        return contrasenia;
+    }
+
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
+    }
+    
     public int getRol() {
         return rol;
     }

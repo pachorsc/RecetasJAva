@@ -63,11 +63,11 @@ public class BD {
       String consu = "insert into usuarios values ('"+ usu +"', '"+ cont +"', 0)";
       return consu;
     }
-    static public String count_usu(String usu){
+    static public String select_usu(String usu){
         String consu = "select nombre from usuarios where nombre = '"+usu+"'";
         return consu;
     }
-    static public String count_cont(String cont){
+    static public String select_cont(String cont){
         String consu = "select nombre from usuarios where contraseña = '"+cont+"'";
         return consu;
     } 

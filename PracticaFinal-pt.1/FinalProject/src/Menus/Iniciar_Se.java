@@ -5,7 +5,7 @@
 package Menus;
 
 import finalproject.BD;
-import static finalproject.FinalProject.setUsuario_Ini;
+import finalproject.Usuario;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -171,20 +171,18 @@ public class Iniciar_Se extends javax.swing.JFrame {
     }//GEN-LAST:event_Boton_ir_RegistroActionPerformed
 
     private void Boton_EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_EntrarActionPerformed
-        String usuario = Text_Usu.getText();
-        String contraseña = Text_cont.getText();
+        Usuario usu = new Usuario(Text_Usu.getText(), Text_cont.getText());
         BD conexion = new BD();
         //si al registrarse algun espacio está vacio entonces saldrá un error
-        if (usuario.isEmpty() || contraseña.isEmpty()) {
+        if (usu.getNombre().isEmpty() || usu.getContrasenia().isEmpty()) {
             JOptionPane.showMessageDialog(this, 
                         "Algun espacio está vacio",
                         "Error",
                     JOptionPane.ERROR_MESSAGE);
         }  else try {
-            if (conexion.coincide(conexion.count_usu(usuario))) {
-                if (conexion.coincide(conexion.count_cont(contraseña))) {
+            if (conexion.coincide(conexion.select_usu(usu.getNombre()))) {
+                if (conexion.coincide(conexion.select_cont(usu.getContrasenia()))) {
                     System.out.println("inicio de sesion hecha");
-                    setUsuario_Ini(usuario);
                     Registrado_Usuario V1 = new Registrado_Usuario();
                     V1.setVisible(true);
                     V1.setLocationRelativeTo(null);

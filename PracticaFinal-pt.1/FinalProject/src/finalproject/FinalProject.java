@@ -6,8 +6,6 @@ import java.sql.SQLException;
 
 
 public class FinalProject {
-    static String usuario_Ini= "";
-
 
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         
@@ -17,13 +15,4 @@ public class FinalProject {
         
     }
 
-    public static String getUsuario_Ini() {
-        return usuario_Ini;
-    }
-
-    public static void setUsuario_Ini(String usuario_Ini) {
-        FinalProject.usuario_Ini = usuario_Ini;
-    }
-    
-    
 }
