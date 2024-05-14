@@ -71,23 +71,12 @@ public class Registrado_Admin extends javax.swing.JFrame {
 
         Tabla_Receta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"ss", "ss", "ss"},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
             }
-        });
+        ));
         jScrollPane2.setViewportView(Tabla_Receta);
 
         jButton3.setText("Ver");

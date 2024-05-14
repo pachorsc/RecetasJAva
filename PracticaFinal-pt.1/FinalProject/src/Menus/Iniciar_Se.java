@@ -4,6 +4,11 @@
  */
 package Menus;
 
+import finalproject.BD;
+import static finalproject.FinalProject.setUsuario_Ini;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -168,14 +173,42 @@ public class Iniciar_Se extends javax.swing.JFrame {
     private void Boton_EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_EntrarActionPerformed
         String usuario = Text_Usu.getText();
         String contraseña = Text_cont.getText();
-        
+        BD conexion = new BD();
         //si al registrarse algun espacio está vacio entonces saldrá un error
         if (usuario.isEmpty() || contraseña.isEmpty()) {
             JOptionPane.showMessageDialog(this, 
                         "Algun espacio está vacio",
                         "Error",
                     JOptionPane.ERROR_MESSAGE);
-        } 
+        }  else try {
+            if (conexion.coincide(conexion.count_usu(usuario))) {
+                if (conexion.coincide(conexion.count_cont(contraseña))) {
+                    System.out.println("inicio de sesion hecha");
+                    setUsuario_Ini(usuario);
+                    Registrado_Usuario V1 = new Registrado_Usuario();
+                    V1.setVisible(true);
+                    V1.setLocationRelativeTo(null);
+                    this.setVisible(false);
+                    
+                    
+                } else  {
+                    JOptionPane.showMessageDialog(this, 
+                        "Contraseña incorrecto",
+                        "Error",
+                    JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                 JOptionPane.showMessageDialog(this, 
+                        "Usuario incorrecto",
+                        "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Iniciar_Se.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Iniciar_Se.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_Boton_EntrarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

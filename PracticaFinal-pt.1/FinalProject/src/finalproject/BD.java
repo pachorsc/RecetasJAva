@@ -57,4 +57,8 @@ public class BD {
         String consu = "select nombre from usuarios where nombre = '"+usu+"'";
         return consu;
     }
+    static public String count_cont(String cont){
+        String consu = "select nombre from usuarios where contraseña = '"+cont+"'";
+        return consu;
+    }
 }
