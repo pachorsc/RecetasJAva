@@ -5,6 +5,7 @@
 package Menus;
 
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,6 +18,19 @@ public class Eleccion extends javax.swing.JFrame {
      */
     public Eleccion() {
         initComponents();
+        
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Nombre");
+        model.addColumn("Duracion");
+        model.addColumn("Descripción");
+        Tabla_Receta.setModel(model);
+        
+        String datos[] = new String[3];
+        String consu = "select * from recetas";
+        
+        
+        
+        
     }
 
     /**
@@ -88,14 +102,6 @@ public class Eleccion extends javax.swing.JFrame {
             }
         });
 
-        Tabla_Receta.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
         Tabla_Receta.setColumnSelectionAllowed(true);
         jScrollPane2.setViewportView(Tabla_Receta);
         Tabla_Receta.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
