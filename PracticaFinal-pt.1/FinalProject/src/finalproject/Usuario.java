@@ -6,15 +6,15 @@ public class Usuario {
     private int rol;
         
     public Usuario(String nom, String con){
-        String nombre=nom;
-        String contrasenia=con;
-        int rol=0;
+        nombre=nom;
+        contrasenia=con;
+        rol=0;
     }
     
      public Usuario(String nom, String con, int n){
-        String nombre=nom;
-        String contrasenia=con;
-        int rol=1;
+        nombre=nom;
+        contrasenia=con;
+        rol=1;
     }
     
     public String getNombre() {
