@@ -49,7 +49,7 @@ public class BD {
     }
     
     
-    static public String insert(String usu ,String cont){
+    static public String insertar_usu(String usu ,String cont){
       String consu = "insert into usuarios values ('"+ usu +"', '"+ cont +"', 0)";
       return consu;
     }
@@ -57,8 +57,25 @@ public class BD {
         String consu = "select nombre from usuarios where nombre = '"+usu+"'";
         return consu;
     }
+    
     static public String count_cont(String cont){
         String consu = "select nombre from usuarios where contraseña = '"+cont+"'";
+        return consu;
+    }
+    static public String select_receta(String cont){
+        String consu = "select * from recetas";
+        return consu;
+    }
+    static public String select_receta_nombre(String receta){
+        String consu = "select * from recetas where nombre = '"+receta+"'";
+        return consu;
+    }
+    static public String select_receta_usu(String receta){
+        String consu = "select * from recetas where autor = '"+receta+"'";
+        return consu;
+    }
+    static public String select_receta_etiqueta(String receta){
+        String consu = "select * from recetas where cod in (select receta from receta_etiqueta where etiqueta = (select cod from etiquetas where nombre='"+receta+"'))";
         return consu;
     }
 }
