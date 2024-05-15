@@ -4,6 +4,7 @@
  */
 package Menus;
 
+import finalproject.FinalProject;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,10 +18,12 @@ public class Ver_Receta extends javax.swing.JFrame {
     /**
      * Creates new form Ver_Receta
      */
-    public Ver_Receta() {
+    public Ver_Receta(FinalProject rec) {
         initComponents();
+         jLabel1.setText(rec.getRece().getNombre());
+         Texto_Receta.setText(rec.getRece().getPasos());
     }
-
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -171,7 +174,7 @@ public class Ver_Receta extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Ver_Receta().setVisible(true);
+                //new Ver_Receta().setVisible(true);
             }
         });
     }

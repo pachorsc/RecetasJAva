@@ -5,6 +5,7 @@
 package Menus;
 
 import finalproject.BD;
+import finalproject.FinalProject;
 import finalproject.Usuario;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -85,6 +86,12 @@ public class Iniciar_Se extends javax.swing.JFrame {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        Text_cont.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Text_contActionPerformed(evt);
             }
         });
 
@@ -171,7 +178,8 @@ public class Iniciar_Se extends javax.swing.JFrame {
     }//GEN-LAST:event_Boton_ir_RegistroActionPerformed
 
     private void Boton_EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_EntrarActionPerformed
-        Usuario usu = new Usuario(Text_Usu.getText(), Text_cont.getText());
+        FinalProject usuarioact = new FinalProject();
+        Usuario usu = new Usuario( Text_Usu.getText(), String.copyValueOf(Text_cont.getPassword()) );
         BD conexion = new BD();
         //si al registrarse algun espacio está vacio entonces saldrá un error
         if (usu.getNombre().isEmpty() || usu.getContrasenia().isEmpty()) {
@@ -188,6 +196,7 @@ public class Iniciar_Se extends javax.swing.JFrame {
                     V1.setLocationRelativeTo(null);
                     this.setVisible(false);
                     
+                    usuarioact.setUsu(usu);
                     
                 } else  {
                     JOptionPane.showMessageDialog(this, 
@@ -222,6 +231,10 @@ public class Iniciar_Se extends javax.swing.JFrame {
         V3.setLocationRelativeTo(null);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void Text_contActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Text_contActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Text_contActionPerformed
 
     /**
      * @param args the command line arguments

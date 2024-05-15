@@ -181,6 +181,9 @@
           </Events>
         </Component>
         <Component class="javax.swing.JPasswordField" name="Text_cont">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Text_contActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

@@ -6,6 +6,8 @@ package Menus;
 
 import java.sql.*;
 import finalproject.BD;
+import finalproject.FinalProject;
+import finalproject.Receta;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -44,6 +46,8 @@ public class Eleccion extends javax.swing.JFrame {
         }
         
         Tabla_Receta.setModel(model);
+        Tabla_Receta.setCellSelectionEnabled(false);
+        Tabla_Receta.setRowSelectionAllowed(true);
         
        
     }
@@ -117,6 +121,14 @@ public class Eleccion extends javax.swing.JFrame {
             }
         });
 
+        Tabla_Receta.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
         Tabla_Receta.setColumnSelectionAllowed(true);
         jScrollPane2.setViewportView(Tabla_Receta);
         Tabla_Receta.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
@@ -227,6 +239,14 @@ public class Eleccion extends javax.swing.JFrame {
                 "Fila no elegida",
                 "ERROR",
                 JOptionPane.ERROR_MESSAGE);
+        } else {
+            FinalProject rece = new FinalProject();
+            Receta a = new Receta(Tabla_Receta.getValueAt(Tabla_Receta.getSelectedRow(),0).toString(),Tabla_Receta.getValueAt(Tabla_Receta.getSelectedRow(),1).toString(),Tabla_Receta.getValueAt(Tabla_Receta.getSelectedRow(),2).toString());
+            rece.setRece(a);
+            Ver_Receta V1 = new Ver_Receta(rece);
+            V1.setVisible(true);
+            V1.setLocationRelativeTo(null);
+            this.setVisible(false);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 

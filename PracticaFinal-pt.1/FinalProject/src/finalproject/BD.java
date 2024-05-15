@@ -72,7 +72,7 @@ public class BD {
         return consu;
     } 
     static public String select_receta(){
-        String consu = "select * from recetas";
+        String consu = "select nombre, autor, pasos from recetas";
         return consu;
     }
     static public String select_receta_nombre(String receta){
