@@ -1,13 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package Menus;
 
+import finalproject.BD;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,8 +17,31 @@ public class Registrado_Usuario extends javax.swing.JFrame {
     /**
      * Creates new form Registrado_Usuario
      */
-    public Registrado_Usuario() {
+    public Registrado_Usuario() throws ClassNotFoundException, SQLException {
         initComponents();
+        BD elegir = new BD();
+        
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Nombre");
+        model.addColumn("autor");
+        model.addColumn("pasos");
+        Tabla_Receta.setModel(model);
+        
+        //limite del estring es el count de la recetas totales
+        String datos[] = new String[3];
+        //no llena porque no hay recetas
+        
+        ResultSet rs = elegir.datos(elegir.select_receta());
+        while(rs.next()){//Se hace el llenado de la tabla con los datos que se obtienen  de la consulta
+            datos[0] = rs.getString(1);
+            datos[1] = rs.getString(2);
+            datos[2] = rs.getString(3);
+            model.addRow(datos);
+        }
+        
+        Tabla_Receta.setModel(model);
+        Tabla_Receta.setCellSelectionEnabled(false);
+        Tabla_Receta.setRowSelectionAllowed(true);
     }
 
     /**
@@ -263,7 +285,13 @@ public class Registrado_Usuario extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Registrado_Usuario().setVisible(true);
+                try {
+                    new Registrado_Usuario().setVisible(true);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Registrado_Usuario.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Registrado_Usuario.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

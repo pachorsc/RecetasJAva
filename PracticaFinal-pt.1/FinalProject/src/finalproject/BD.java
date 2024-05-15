@@ -8,8 +8,8 @@ public class BD {
     //Conectar base de datos
     static public Connection Conectar() throws ClassNotFoundException, SQLException{
         String url = "jdbc:oracle:thin:@//localhost:1521/xe";
-        String username = "aula";
-        String pass = "aula";
+        String username = "Pacho";
+        String pass = "123";
         Class.forName("oracle.jdbc.driver.OracleDriver");
         Connection con = DriverManager.getConnection(url, username, pass);
         return con;
