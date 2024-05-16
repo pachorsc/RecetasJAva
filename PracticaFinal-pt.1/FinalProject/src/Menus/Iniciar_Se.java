@@ -178,37 +178,43 @@ public class Iniciar_Se extends javax.swing.JFrame {
     }//GEN-LAST:event_Boton_ir_RegistroActionPerformed
 
     private void Boton_EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_EntrarActionPerformed
-        FinalProject usuarioact = new FinalProject();
-        Usuario usu = new Usuario( Text_Usu.getText(), String.copyValueOf(Text_cont.getPassword()) );
-        BD conexion = new BD();
-        //si al registrarse algun espacio está vacio entonces saldrá un error
-        if (usu.getNombre().isEmpty() || usu.getContrasenia().isEmpty()) {
-            JOptionPane.showMessageDialog(this, 
+        try {
+            FinalProject usuarioact = new FinalProject();
+            Usuario usu = new Usuario( Text_Usu.getText(), String.copyValueOf(Text_cont.getPassword()) );
+            BD.Conectar();
+            //si al registrarse algun espacio está vacio entonces saldrá un error
+            if (usu.getNombre().isEmpty() || usu.getContrasenia().isEmpty()) { 
+                JOptionPane.showMessageDialog(this,
                         "Algun espacio está vacio",
                         "Error",
-                    JOptionPane.ERROR_MESSAGE);
-        }  else try {
-            if (conexion.coincide(conexion.select_usu(usu.getNombre()))) {
-                if (conexion.coincide(conexion.select_cont(usu.getContrasenia()))) {
-                    System.out.println("inicio de sesion hecha");
-                    Registrado_Usuario V1 = new Registrado_Usuario(usu.getNombre());
-                    V1.setVisible(true);
-                    V1.setLocationRelativeTo(null);
-                    this.setVisible(false);
-                    
-                    usuarioact.setUsu(usu);
-                    
-                } else  {
-                    JOptionPane.showMessageDialog(this, 
-                        "Contraseña incorrecto",
-                        "Error",
-                    JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.ERROR_MESSAGE);
+            }  else try {
+                if (BD.coincide(BD.select_usu(usu.getNombre()))) {
+                    if (BD.coincide(BD.select_cont(usu.getContrasenia()))) {
+                        System.out.println("inicio de sesion hecha");
+                        Registrado_Usuario V1 = new Registrado_Usuario(usu.getNombre());
+                        V1.setVisible(true);
+                        V1.setLocationRelativeTo(null);
+                        this.setVisible(false);
+                        
+                        usuarioact.setUsu(usu);
+                        
+                    } else  {
+                        JOptionPane.showMessageDialog(this,
+                                "Contraseña incorrecto",
+                                "Error",
+                                JOptionPane.ERROR_MESSAGE);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this,
+                            "Usuario incorrecto",
+                            "Error",
+                            JOptionPane.ERROR_MESSAGE);
                 }
-            } else {
-                 JOptionPane.showMessageDialog(this, 
-                        "Usuario incorrecto",
-                        "Error",
-                    JOptionPane.ERROR_MESSAGE);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Iniciar_Se.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(Iniciar_Se.class.getName()).log(Level.SEVERE, null, ex);
             }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Iniciar_Se.class.getName()).log(Level.SEVERE, null, ex);

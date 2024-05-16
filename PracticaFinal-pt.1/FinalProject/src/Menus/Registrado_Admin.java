@@ -24,7 +24,7 @@ public class Registrado_Admin extends javax.swing.JFrame {
      */
     public Registrado_Admin() throws ClassNotFoundException, SQLException {
         initComponents();
-         BD elegir = new BD();
+         BD.Conectar();
         
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Nombre");
@@ -36,7 +36,7 @@ public class Registrado_Admin extends javax.swing.JFrame {
         String datos[] = new String[3];
         //no llena porque no hay recetas
         
-        ResultSet rs = elegir.datos(elegir.select_receta());
+        ResultSet rs = BD.datos(BD.select_receta());
         while(rs.next()){//Se hace el llenado de la tabla con los datos que se obtienen  de la consulta
             datos[0] = rs.getString(1);
             datos[1] = rs.getString(2);
