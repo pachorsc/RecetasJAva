@@ -135,7 +135,7 @@ public class Editar_Receta extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         try {
-            Registrado_Usuario V3 = new Registrado_Usuario();
+            Registrado_Usuario V3 = new Registrado_Usuario(Sesion.getNom());
             V3.setVisible(true);
             V3.setLocationRelativeTo(null);
             this.setVisible(false);
@@ -157,7 +157,7 @@ public class Editar_Receta extends javax.swing.JFrame {
                     JOptionPane.ERROR_MESSAGE);
         }
         else {
-            Resetas_Usuario V4 = new Resetas_Usuario();
+            Resetas_Usuario V4 = new Resetas_Usuario("a");
             V4.setVisible(true);
             V4.setLocationRelativeTo(null);
             this.setVisible(false);

@@ -157,7 +157,7 @@ public class Editar_Datos_Usu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        Resetas_Usuario V3 = new Resetas_Usuario();
+        Resetas_Usuario V3 = new Resetas_Usuario(Sesion.getNom());
         V3.setVisible(true);
         V3.setLocationRelativeTo(null);
         this.setVisible(false);
@@ -176,6 +176,7 @@ public class Editar_Datos_Usu extends javax.swing.JFrame {
                 JOptionPane.ERROR_MESSAGE);
         }
 
+        Sesion.setNomUsu(usuario);
     }//GEN-LAST:event_Boton_RegistrarseActionPerformed
 
     /**

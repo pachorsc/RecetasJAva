@@ -17,15 +17,20 @@ public class Registrado_Usuario extends javax.swing.JFrame {
     /**
      * Creates new form Registrado_Usuario
      */
-    public Registrado_Usuario() throws ClassNotFoundException, SQLException {
+    
+    public Registrado_Usuario(String nom) throws ClassNotFoundException, SQLException {
         initComponents();
         BD elegir = new BD();
+        
+        Sesion.setNomUsu(nom);
         
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Nombre");
         model.addColumn("autor");
         model.addColumn("pasos");
         Tabla_Receta.setModel(model);
+        
+        jButton2.setText(nom);
         
         //limite del estring es el count de la recetas totales
         String datos[] = new String[3];
@@ -234,7 +239,7 @@ public class Registrado_Usuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Resetas_Usuario V1 = new Resetas_Usuario();
+        Resetas_Usuario V1 = new Resetas_Usuario(Sesion.getNom());
         V1.setVisible(true);
         V1.setLocationRelativeTo(null);
         this.setVisible(false);
@@ -243,6 +248,7 @@ public class Registrado_Usuario extends javax.swing.JFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         Eleccion V3 = null;
+        Sesion.setNomUsu(null);
         try {
             V3 = new Eleccion();
         } catch (ClassNotFoundException ex) {
@@ -285,13 +291,13 @@ public class Registrado_Usuario extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new Registrado_Usuario().setVisible(true);
+                /*try {
+                    //new Registrado_Usuario().setVisible(true);
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(Registrado_Usuario.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (SQLException ex) {
                     Logger.getLogger(Registrado_Usuario.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                }*/
             }
         });
     }

@@ -18,8 +18,10 @@ public class Resetas_Usuario extends javax.swing.JFrame {
     /**
      * Creates new form Resetas_Usuario
      */
-    public Resetas_Usuario() {
+    
+    public Resetas_Usuario(String nom) {
         initComponents();
+        jLabel1.setText(Sesion.getNom());
     }
 
     /**
@@ -161,7 +163,7 @@ public class Resetas_Usuario extends javax.swing.JFrame {
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         Registrado_Usuario V3 = null;
         try {
-            V3 = new Registrado_Usuario();
+            V3 = new Registrado_Usuario(Sesion.getNom());
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Resetas_Usuario.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -219,7 +221,7 @@ public class Resetas_Usuario extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Resetas_Usuario().setVisible(true);
+                //new Resetas_Usuario().setVisible(true);
             }
         });
     }

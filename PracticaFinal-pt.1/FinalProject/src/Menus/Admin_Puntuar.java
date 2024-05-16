@@ -139,7 +139,7 @@ public class Admin_Puntuar extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         try {
-            Registrado_Usuario V3 = new Registrado_Usuario();
+            Registrado_Usuario V3 = new Registrado_Usuario(Sesion.getNom());
             V3.setVisible(true);
             V3.setLocationRelativeTo(null);
             this.setVisible(false);

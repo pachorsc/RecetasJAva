@@ -205,13 +205,15 @@ public class Registro extends javax.swing.JFrame {
                     //meter en la base de datos 
                     
                         conexion.basedatos(conexion.insertar_usu(usuario, contraseña));
+                        
+                        //llenar el objeto de uuario
 
                     } catch (ClassNotFoundException ex) {
                         Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (SQLException ex) {
                         Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    Registrado_Usuario V1 = new Registrado_Usuario();
+                    Registrado_Usuario V1 = new Registrado_Usuario(usuario);
                     V1.setVisible(true);
                     V1.setLocationRelativeTo(null);
                     this.setVisible(false);

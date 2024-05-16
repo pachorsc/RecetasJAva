@@ -191,7 +191,7 @@ public class Iniciar_Se extends javax.swing.JFrame {
             if (conexion.coincide(conexion.select_usu(usu.getNombre()))) {
                 if (conexion.coincide(conexion.select_cont(usu.getContrasenia()))) {
                     System.out.println("inicio de sesion hecha");
-                    Registrado_Usuario V1 = new Registrado_Usuario();
+                    Registrado_Usuario V1 = new Registrado_Usuario(usu.getNombre());
                     V1.setVisible(true);
                     V1.setLocationRelativeTo(null);
                     this.setVisible(false);

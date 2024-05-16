@@ -6,34 +6,35 @@ import java.sql.*;
 
 public class BD {
     //Conectar base de datos
-    static public Connection Conectar() throws ClassNotFoundException, SQLException{
+    private static Connection con = null;
+    
+    static public void Conectar() throws ClassNotFoundException, SQLException{
         String url = "jdbc:oracle:thin:@//localhost:1521/xe";
         String username = "aula";
         String pass = "aula";
         Class.forName("oracle.jdbc.driver.OracleDriver");
-        Connection con = DriverManager.getConnection(url, username, pass);
-        return con;
+        con = DriverManager.getConnection(url, username, pass);
     }
     
     //Ejecutar Querys
     static public void basedatos(String n) throws ClassNotFoundException, SQLException {
-        Statement st = Conectar().createStatement();
+        Statement st = con.createStatement();
 
         String consulta  = n;
          
-        System.out.println("Conexion establecida");
+        //System.out.println("Conexion establecida");
         ResultSet rs = st.executeQuery(consulta);
         
-        Conectar().close();
+        con.close();
     }
     
     //Booleano si coincide
     static public boolean coincide(String n) throws ClassNotFoundException, SQLException {
-        Statement st = Conectar().createStatement();
+        Statement st = con.createStatement();
 
         String consulta  = n;
          
-        System.out.println("Conexion establecida");
+        //System.out.println("Conexion establecida");
         ResultSet rs = st.executeQuery(consulta);
         boolean existe = false;
         
@@ -41,21 +42,18 @@ public class BD {
             existe = true;
         }
         
-        Conectar().close();
-        
         return existe;
     }
     
     //Devuelve un cursor con un select
     static public ResultSet datos(String n) throws ClassNotFoundException, SQLException {
-        Statement st = Conectar().createStatement();
+        Statement st = con.createStatement();
 
         String consulta  = n;
          
-        System.out.println("Conexion establecida");
+        //System.out.println("Conexion establecida");
         ResultSet rs = st.executeQuery(consulta);
         
-        Conectar().close();
         return rs;
     }
     
