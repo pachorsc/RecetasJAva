@@ -4,10 +4,13 @@
  */
 package Menus;
 
+import finalproject.BD;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,9 +22,32 @@ public class Resetas_Usuario extends javax.swing.JFrame {
      * Creates new form Resetas_Usuario
      */
     
-    public Resetas_Usuario(String nom) {
+    public Resetas_Usuario(String nom) throws ClassNotFoundException, SQLException {
         initComponents();
         jLabel1.setText(Sesion.getNom());
+        BD.Conectar();
+        
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Nombre");
+        model.addColumn("ingredientes");
+        model.addColumn("pasos");
+        Tabla_Receta.setModel(model);
+        
+        //limite del estring es el count de la recetas totales
+        String datos[] = new String[3];
+        //no llena porque no hay recetas
+        
+        ResultSet rs = BD.datos(BD.select_receta__usu(Sesion.getNom()));
+        while(rs.next()){//Se hace el llenado de la tabla con los datos que se obtienen  de la consulta
+            datos[0] = rs.getString(1);
+            datos[1] = rs.getString(2);
+            datos[2] = rs.getString(3);
+            model.addRow(datos);
+        }
+        
+        Tabla_Receta.setModel(model);
+        Tabla_Receta.setCellSelectionEnabled(false);
+        Tabla_Receta.setRowSelectionAllowed(true);
     }
 
     /**

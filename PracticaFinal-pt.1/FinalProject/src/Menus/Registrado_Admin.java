@@ -237,10 +237,16 @@ public class Registrado_Admin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        Resetas_Usuario V1 = new Resetas_Usuario(Sesion.getNom());
-        V1.setVisible(true);
-        V1.setLocationRelativeTo(null);
-        this.setVisible(false);
+        try {
+            Resetas_Usuario V1 = new Resetas_Usuario(Sesion.getNom());
+            V1.setVisible(true);
+            V1.setLocationRelativeTo(null);
+            this.setVisible(false);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Registrado_Admin.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Registrado_Admin.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed

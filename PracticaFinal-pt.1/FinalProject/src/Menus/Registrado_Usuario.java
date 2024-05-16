@@ -239,10 +239,16 @@ public class Registrado_Usuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Resetas_Usuario V1 = new Resetas_Usuario(Sesion.getNom());
-        V1.setVisible(true);
-        V1.setLocationRelativeTo(null);
-        this.setVisible(false);
+        try {
+            Resetas_Usuario V1 = new Resetas_Usuario(Sesion.getNom());
+            V1.setVisible(true);
+            V1.setLocationRelativeTo(null);
+            this.setVisible(false);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Registrado_Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Registrado_Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }//GEN-LAST:event_jButton2ActionPerformed
 

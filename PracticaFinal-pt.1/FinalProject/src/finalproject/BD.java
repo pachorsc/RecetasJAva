@@ -18,6 +18,7 @@ public class BD {
     
     //Ejecutar Querys
     static public void basedatos(String n) throws ClassNotFoundException, SQLException {
+        Conectar();
         Statement st = con.createStatement();
 
         String consulta  = n;
@@ -30,6 +31,7 @@ public class BD {
     
     //Booleano si coincide
     static public boolean coincide(String n) throws ClassNotFoundException, SQLException {
+        Conectar();
         Statement st = con.createStatement();
 
         String consulta  = n;
@@ -47,6 +49,7 @@ public class BD {
     
     //Devuelve un cursor con un select
     static public ResultSet datos(String n) throws ClassNotFoundException, SQLException {
+        Conectar();
         Statement st = con.createStatement();
 
         String consulta  = n;
@@ -84,6 +87,10 @@ public class BD {
     
     static public String select_receta_etiqueta(String receta){
         String consu = "select * from recetas where cod in (select receta from receta_etiqueta where etiqueta = (select cod from etiquetas where nombre='"+receta+"'))";
+        return consu;
+    }
+    static public String select_receta__usu(String usuario){
+        String consu = "select nombre, ingredientes, pasos from recetas where autor = '"+usuario+"'";
         return consu;
     }
 }
