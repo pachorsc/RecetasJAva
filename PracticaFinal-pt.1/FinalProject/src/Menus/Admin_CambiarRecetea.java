@@ -5,6 +5,9 @@
  */
 package Menus;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -50,7 +53,6 @@ public class Admin_CambiarRecetea extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(718, 599));
         setMinimumSize(new java.awt.Dimension(718, 599));
-        setPreferredSize(new java.awt.Dimension(718, 599));
         setResizable(false);
 
         jPanel1.setMaximumSize(new java.awt.Dimension(718, 599));
@@ -146,17 +148,29 @@ public class Admin_CambiarRecetea extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        Registrado_Usuario V3 = new Registrado_Usuario();
-        V3.setVisible(true);
-        V3.setLocationRelativeTo(null);
-        this.setVisible(false);
+        try {
+            Registrado_Usuario V3 = new Registrado_Usuario();
+            V3.setVisible(true);
+            V3.setLocationRelativeTo(null);
+            this.setVisible(false);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Admin_CambiarRecetea.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Admin_CambiarRecetea.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        Registrado_Usuario V3 = new Registrado_Usuario();
-        V3.setVisible(true);
-        V3.setLocationRelativeTo(null);
-        this.setVisible(false);
+        try {
+            Registrado_Usuario V3 = new Registrado_Usuario();
+            V3.setVisible(true);
+            V3.setLocationRelativeTo(null);
+            this.setVisible(false);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Admin_CambiarRecetea.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Admin_CambiarRecetea.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -170,10 +184,16 @@ public class Admin_CambiarRecetea extends javax.swing.JFrame {
                 JOptionPane.ERROR_MESSAGE);
         }
         else {
-            Registrado_Admin V4 = new Registrado_Admin();
-            V4.setVisible(true);
-            V4.setLocationRelativeTo(null);
-            this.setVisible(false);
+            try {
+                Registrado_Admin V4 = new Registrado_Admin();
+                V4.setVisible(true);
+                V4.setLocationRelativeTo(null);
+                this.setVisible(false);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Admin_CambiarRecetea.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(Admin_CambiarRecetea.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

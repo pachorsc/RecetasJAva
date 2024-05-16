@@ -5,6 +5,10 @@
  */
 package Menus;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author EAG
@@ -130,17 +134,29 @@ public class List_Usu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        Registrado_Usuario V3 = new Registrado_Usuario();
-        V3.setVisible(true);
-        V3.setLocationRelativeTo(null);
-        this.setVisible(false);
+        try {
+            Registrado_Usuario V3 = new Registrado_Usuario();
+            V3.setVisible(true);
+            V3.setLocationRelativeTo(null);
+            this.setVisible(false);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(List_Usu.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(List_Usu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        try {
             Registrado_Usuario V3 = new Registrado_Usuario();
             V3.setVisible(true);
             V3.setLocationRelativeTo(null);
             this.setVisible(false);        // TODO add your handling code here:
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(List_Usu.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(List_Usu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**

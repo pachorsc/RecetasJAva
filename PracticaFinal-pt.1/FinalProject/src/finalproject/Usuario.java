@@ -5,7 +5,12 @@ public class Usuario {
     private String contrasenia;
     private int rol;
        
-    public Usuario(){};
+    public Usuario(){
+        nombre="";
+        contrasenia="";
+        rol=0;
+    };
+    
     public Usuario(String nom, String con){
         nombre=nom;
         contrasenia=con;

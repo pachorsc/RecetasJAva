@@ -5,6 +5,9 @@
  */
 package Menus;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -135,10 +138,16 @@ public class Admin_Puntuar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        Registrado_Usuario V3 = new Registrado_Usuario();
-        V3.setVisible(true);
-        V3.setLocationRelativeTo(null);
-        this.setVisible(false);
+        try {
+            Registrado_Usuario V3 = new Registrado_Usuario();
+            V3.setVisible(true);
+            V3.setLocationRelativeTo(null);
+            this.setVisible(false);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Admin_Puntuar.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Admin_Puntuar.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -152,10 +161,16 @@ public class Admin_Puntuar extends javax.swing.JFrame {
                 JOptionPane.ERROR_MESSAGE);
         }
         else {
-            Registrado_Admin V4 = new Registrado_Admin();
-            V4.setVisible(true);
-            V4.setLocationRelativeTo(null);
-            this.setVisible(false);
+            try {
+                Registrado_Admin V4 = new Registrado_Admin();
+                V4.setVisible(true);
+                V4.setLocationRelativeTo(null);
+                this.setVisible(false);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Admin_Puntuar.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(Admin_Puntuar.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

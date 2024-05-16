@@ -8,8 +8,8 @@ public class BD {
     //Conectar base de datos
     static public Connection Conectar() throws ClassNotFoundException, SQLException{
         String url = "jdbc:oracle:thin:@//localhost:1521/xe";
-        String username = "Pacho";
-        String pass = "123";
+        String username = "aula";
+        String pass = "aula";
         Class.forName("oracle.jdbc.driver.OracleDriver");
         Connection con = DriverManager.getConnection(url, username, pass);
         return con;
@@ -72,17 +72,18 @@ public class BD {
         return consu;
     } 
     static public String select_receta(){
+        String consu = "select * from recetas";
+        return consu;
+    }
+    static public String select_receta__eleccion(){
         String consu = "select nombre, autor, pasos from recetas";
         return consu;
     }
-    static public String select_receta_nombre(String receta){
-        String consu = "select * from recetas where nombre = '"+receta+"'";
+    static public String select_receta(String condicion, String receta){
+        String consu = "select * from recetas where "+condicion+" = '"+receta+"'";
         return consu;
     }
-    static public String select_receta_usu(String receta){
-        String consu = "select * from recetas where autor = '"+receta+"'";
-        return consu;
-    }
+    
     static public String select_receta_etiqueta(String receta){
         String consu = "select * from recetas where cod in (select receta from receta_etiqueta where etiqueta = (select cod from etiquetas where nombre='"+receta+"'))";
         return consu;
