@@ -4,6 +4,9 @@
  */
 package Menus;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -157,10 +160,16 @@ public class Editar_Datos_Usu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        Resetas_Usuario V3 = new Resetas_Usuario(Sesion.getNom());
-        V3.setVisible(true);
-        V3.setLocationRelativeTo(null);
-        this.setVisible(false);
+        try {
+            Resetas_Usuario V3 = new Resetas_Usuario(Sesion.getNom());
+            V3.setVisible(true);
+            V3.setLocationRelativeTo(null);
+            this.setVisible(false);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Editar_Datos_Usu.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Editar_Datos_Usu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void Boton_RegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_RegistrarseActionPerformed

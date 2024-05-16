@@ -1,6 +1,8 @@
 package Menus;
 
 import finalproject.BD;
+import finalproject.FinalProject;
+import finalproject.Receta;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -235,7 +237,16 @@ public class Registrado_Usuario extends javax.swing.JFrame {
                     "Fila no elegida",
                     "ERROR",
                     JOptionPane.ERROR_MESSAGE);
+        } else {
+            FinalProject rece = new FinalProject();
+            Receta a = new Receta(Tabla_Receta.getValueAt(Tabla_Receta.getSelectedRow(),0).toString(),Tabla_Receta.getValueAt(Tabla_Receta.getSelectedRow(),1).toString(),Tabla_Receta.getValueAt(Tabla_Receta.getSelectedRow(),2).toString());
+            rece.setRece(a);
+            Registrado_Puntuar V1 = new Registrado_Puntuar();
+            V1.setVisible(true);
+            V1.setLocationRelativeTo(null);
+            this.setVisible(false);
         }
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

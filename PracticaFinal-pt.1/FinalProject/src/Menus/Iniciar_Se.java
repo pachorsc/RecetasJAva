@@ -179,25 +179,25 @@ public class Iniciar_Se extends javax.swing.JFrame {
 
     private void Boton_EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_EntrarActionPerformed
         try {
-            FinalProject usuarioact = new FinalProject();
-            Usuario usu = new Usuario( Text_Usu.getText(), String.copyValueOf(Text_cont.getPassword()) );
             BD.Conectar();
             //si al registrarse algun espacio está vacio entonces saldrá un error
-            if (usu.getNombre().isEmpty() || usu.getContrasenia().isEmpty()) { 
+            if (Text_Usu.getText().isEmpty() || String.copyValueOf(Text_cont.getPassword()).isEmpty()) { 
                 JOptionPane.showMessageDialog(this,
                         "Algun espacio está vacio",
                         "Error",
                         JOptionPane.ERROR_MESSAGE);
             }  else try {
-                if (BD.coincide(BD.select_usu(usu.getNombre()))) {
-                    if (BD.coincide(BD.select_cont(usu.getContrasenia()))) {
+                String nU = Text_Usu.getText();
+                String pass = String.copyValueOf(Text_cont.getPassword());
+                if (BD.coincide(BD.select_usu(nU))) {
+                    if (BD.coincide(BD.select_cont(pass))) {
                         System.out.println("inicio de sesion hecha");
-                        Registrado_Usuario V1 = new Registrado_Usuario(usu.getNombre());
+                        Registrado_Usuario V1 = new Registrado_Usuario(nU);
                         V1.setVisible(true);
                         V1.setLocationRelativeTo(null);
                         this.setVisible(false);
                         
-                        usuarioact.setUsu(usu);
+                        Sesion.setNomUsu(nU);
                         
                     } else  {
                         JOptionPane.showMessageDialog(this,

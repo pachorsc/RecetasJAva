@@ -18,10 +18,10 @@ public class Ver_Receta extends javax.swing.JFrame {
     /**
      * Creates new form Ver_Receta
      */
-    public Ver_Receta(FinalProject rec) {
+    public Ver_Receta() {
         initComponents();
-         jLabel1.setText(rec.getRece().getNombre());
-         Texto_Receta.setText(rec.getRece().getPasos());
+         jLabel1.setText(FinalProject.getRece().getNombre());
+         Texto_Receta.setText(FinalProject.getRece().getPasos());
     }
    
     /**

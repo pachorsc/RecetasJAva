@@ -243,7 +243,7 @@ public class Eleccion extends javax.swing.JFrame {
             FinalProject rece = new FinalProject();
             Receta a = new Receta(Tabla_Receta.getValueAt(Tabla_Receta.getSelectedRow(),0).toString(),Tabla_Receta.getValueAt(Tabla_Receta.getSelectedRow(),1).toString(),Tabla_Receta.getValueAt(Tabla_Receta.getSelectedRow(),2).toString());
             rece.setRece(a);
-            Ver_Receta V1 = new Ver_Receta(rece);
+            Ver_Receta V1 = new Ver_Receta();
             V1.setVisible(true);
             V1.setLocationRelativeTo(null);
             this.setVisible(false);

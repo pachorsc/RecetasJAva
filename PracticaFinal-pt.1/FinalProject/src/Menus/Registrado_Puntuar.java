@@ -4,6 +4,7 @@
  */
 package Menus;
 
+import finalproject.FinalProject;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,6 +21,8 @@ public class Registrado_Puntuar extends javax.swing.JFrame {
      */
     public Registrado_Puntuar() {
         initComponents();
+        jLabel1.setText(FinalProject.getRece().getNombre());
+        Texto_Receta.setText(FinalProject.getRece().getPasos());
     }
 
     /**
@@ -189,7 +192,7 @@ public class Registrado_Puntuar extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Registrado_Puntuar().setVisible(true);
+                //new Registrado_Puntuar().setVisible(true);
             }
         });
     }
