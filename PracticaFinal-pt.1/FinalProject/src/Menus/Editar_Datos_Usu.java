@@ -4,6 +4,10 @@
  */
 package Menus;
 
+import finalproject.BD;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -157,25 +161,41 @@ public class Editar_Datos_Usu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        Resetas_Usuario V3 = new Resetas_Usuario(Sesion.getNom());
-        V3.setVisible(true);
-        V3.setLocationRelativeTo(null);
-        this.setVisible(false);
+        try {
+            Resetas_Usuario V3 = new Resetas_Usuario(Sesion.getNom());
+            V3.setVisible(true);
+            V3.setLocationRelativeTo(null);
+            this.setVisible(false);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Editar_Datos_Usu.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Editar_Datos_Usu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void Boton_RegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_RegistrarseActionPerformed
         String usuario = Text_Usu.getText();
         String contraseña = Text_cont.getText();
         String contraseña2 = Text_Cont2.getText();
-
-        //si al registrarse algun espacio está vacio entonces saldrá un error
-        if (usuario.isEmpty() || contraseña.isEmpty() || contraseña2.isEmpty()) {
-            JOptionPane.showMessageDialog(this,
-                "Algun espacio está vacio",
-                "Error",
-                JOptionPane.ERROR_MESSAGE);
+        try {
+            BD.Conectar();
+            
+            //si al registrarse algun espacio está vacio entonces saldrá un error
+            if (usuario.isEmpty() || contraseña.isEmpty() || contraseña2.isEmpty()) {
+                JOptionPane.showMessageDialog(this,
+                        "Algun espacio está vacio",
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+            
+            Sesion.setNomUsu(usuario);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Editar_Datos_Usu.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Editar_Datos_Usu.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        BD.update_usuario(usuario, Sesion.getNom());
+        BD.update_recetas(usuario, Sesion.getNom());
         Sesion.setNomUsu(usuario);
     }//GEN-LAST:event_Boton_RegistrarseActionPerformed
 

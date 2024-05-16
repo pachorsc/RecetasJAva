@@ -157,10 +157,16 @@ public class Editar_Receta extends javax.swing.JFrame {
                     JOptionPane.ERROR_MESSAGE);
         }
         else {
-            Resetas_Usuario V4 = new Resetas_Usuario("a");
-            V4.setVisible(true);
-            V4.setLocationRelativeTo(null);
-            this.setVisible(false);
+            try {
+                Resetas_Usuario V4 = new Resetas_Usuario("a");
+                V4.setVisible(true);
+                V4.setLocationRelativeTo(null);
+                this.setVisible(false);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Editar_Receta.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(Editar_Receta.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

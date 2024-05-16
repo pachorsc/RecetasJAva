@@ -160,10 +160,16 @@ public class Añ_Rec_Usu extends javax.swing.JFrame {
                 JOptionPane.ERROR_MESSAGE);
         }
         else {
-            Resetas_Usuario V4 = new Resetas_Usuario(nuevoNom);
-            V4.setVisible(true);
-            V4.setLocationRelativeTo(null);
-            this.setVisible(false);
+            try {
+                Resetas_Usuario V4 = new Resetas_Usuario(nuevoNom);
+                V4.setVisible(true);
+                V4.setLocationRelativeTo(null);
+                this.setVisible(false);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Añ_Rec_Usu.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(Añ_Rec_Usu.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
