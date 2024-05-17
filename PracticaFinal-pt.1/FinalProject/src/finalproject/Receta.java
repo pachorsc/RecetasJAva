@@ -21,6 +21,10 @@ public class Receta {
         this.autor = aut;
         this.pasos = pas;
     }
+    public Receta(String nom, String pas){
+        this.nombre = nom;
+        this.pasos = pas;
+    }
 
     public Receta(int cod, String nombre, String autor, String ingredientes, String pasos) {
         this.cod = cod;

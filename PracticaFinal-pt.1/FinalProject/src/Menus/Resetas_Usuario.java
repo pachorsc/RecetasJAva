@@ -5,6 +5,8 @@
 package Menus;
 
 import finalproject.BD;
+import finalproject.FinalProject;
+import finalproject.Receta;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -208,10 +210,14 @@ public class Resetas_Usuario extends javax.swing.JFrame {
                 "ERROR",
                 JOptionPane.ERROR_MESSAGE);
         } else {
+            Receta a = new Receta(Tabla_Receta.getValueAt(Tabla_Receta.getSelectedRow(),0).toString(),
+                                  Tabla_Receta.getValueAt(Tabla_Receta.getSelectedRow(),2).toString());
+            FinalProject.setRece(a);
             Editar_Receta V1 = new Editar_Receta();
             V1.setVisible(true);
             V1.setLocationRelativeTo(null);
             this.setVisible(false);
+            
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

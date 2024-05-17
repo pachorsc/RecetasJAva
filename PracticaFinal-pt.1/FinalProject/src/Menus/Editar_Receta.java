@@ -4,6 +4,7 @@
  */
 package Menus;
 
+import finalproject.BD;
 import finalproject.FinalProject;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -44,7 +45,6 @@ public class Editar_Receta extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1240, 713));
         setResizable(false);
 
         jPanel1.setMaximumSize(new java.awt.Dimension(1240, 713));
@@ -94,7 +94,7 @@ public class Editar_Receta extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(Nuevo_Nom, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(500, Short.MAX_VALUE))
+                .addContainerGap(418, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,6 +170,8 @@ public class Editar_Receta extends javax.swing.JFrame {
         }
         else {
             try {
+                System.out.println(Sesion.getNom());
+                BD.basedatos(BD.editar_receta(nuevoNom, receta, Sesion.getNom() , FinalProject.getRece().getPasos()));
                 Resetas_Usuario V4 = new Resetas_Usuario(Sesion.getNom());
                 V4.setVisible(true);
                 V4.setLocationRelativeTo(null);

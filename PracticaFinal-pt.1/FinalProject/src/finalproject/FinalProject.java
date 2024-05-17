@@ -22,8 +22,8 @@ public class FinalProject {
         return rece;
     }
 
-     public void setRece(Receta a) {
-        this.rece = a;
+     static public void setRece(Receta a) {
+        FinalProject.rece = a;
     }
     
 }

@@ -242,11 +242,10 @@ public class Registrado_Usuario extends javax.swing.JFrame {
                     "ERROR",
                     JOptionPane.ERROR_MESSAGE);
         } else {
-            FinalProject rece = new FinalProject();
             Receta a = new Receta(Tabla_Receta.getValueAt(Tabla_Receta.getSelectedRow(),0).toString(),
                                   Tabla_Receta.getValueAt(Tabla_Receta.getSelectedRow(),1).toString(),
                                   Tabla_Receta.getValueAt(Tabla_Receta.getSelectedRow(),2).toString());
-            rece.setRece(a);
+            FinalProject.setRece(a);
             Registrado_Puntuar V1 = new Registrado_Puntuar();
             V1.setVisible(true);
             V1.setLocationRelativeTo(null);

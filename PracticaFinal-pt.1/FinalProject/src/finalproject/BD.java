@@ -10,8 +10,8 @@ public class BD {
     
     static public void Conectar() throws ClassNotFoundException, SQLException{
         String url = "jdbc:oracle:thin:@//localhost:1521/xe";
-        String username = "aula";
-        String pass = "aula";
+        String username = "Pacho";
+        String pass = "123";
         Class.forName("oracle.jdbc.driver.OracleDriver");
         con = DriverManager.getConnection(url, username, pass);
     }
@@ -103,6 +103,12 @@ public class BD {
     }
     static public String update_recetas(String nuevoNombre, String antiguoNombre){
         String consu = "update from RECETAS set autor = '"+nuevoNombre+"' where autor ='"+antiguoNombre+"'";
+        return consu;
+    }
+    static public String editar_receta(String nuevoNombre,String pasosNuevos, String autor, String pasosAntiguos){
+        String consu = "UPDATE recetas \n" +
+                        "SET nombre = '"+nuevoNombre+"', pasos = '"+pasosNuevos+"' \n" +
+                        "WHERE AUTOR = '"+autor+"' AND pasos = '"+pasosAntiguos+"'";
         return consu;
     }
 }
