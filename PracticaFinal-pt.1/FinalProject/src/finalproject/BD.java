@@ -94,11 +94,11 @@ public class BD {
         return consu;
     }
     static public String update_usuario(String nuevoNombre, String antiguoNombre){
-        String consu = "update from Usuarios set nombre = '"+nuevoNombre+"'where nombre ='"+antiguoNombre+"'";
+        String consu = "update from Usuarios set nombre = '"+nuevoNombre+"' where nombre ='"+antiguoNombre+"'";
         return consu;
     }
     static public String update_recetas(String nuevoNombre, String antiguoNombre){
-        String consu = "update from RECETAS set autor = '"+nuevoNombre+"'where autor ='"+antiguoNombre+"'";
+        String consu = "update from RECETAS set autor = '"+nuevoNombre+"' where autor ='"+antiguoNombre+"'";
         return consu;
     }
 }
