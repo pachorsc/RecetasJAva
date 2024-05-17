@@ -30,7 +30,7 @@ public class Eleccion extends javax.swing.JFrame {
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Nombre");
         model.addColumn("autor");
-        model.addColumn("pasos");
+        model.addColumn("Puntuación");
         Tabla_Receta.setModel(model);
         
         //limite del estring es el count de la recetas totales

@@ -207,6 +207,11 @@ public class Resetas_Usuario extends javax.swing.JFrame {
                 "Fila no elegida",
                 "ERROR",
                 JOptionPane.ERROR_MESSAGE);
+        } else {
+            Editar_Receta V1 = new Editar_Receta();
+            V1.setVisible(true);
+            V1.setLocationRelativeTo(null);
+            this.setVisible(false);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

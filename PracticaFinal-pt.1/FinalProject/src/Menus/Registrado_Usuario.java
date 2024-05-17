@@ -31,8 +31,7 @@ public class Registrado_Usuario extends javax.swing.JFrame {
         model.addColumn("autor");
         model.addColumn("pasos");
         Tabla_Receta.setModel(model);
-        
-        jButton2.setText(nom);
+      
         
         //limite del estring es el count de la recetas totales
         String datos[] = new String[3];
