@@ -38,7 +38,7 @@ public class Registrado_Usuario extends javax.swing.JFrame {
         String datos[] = new String[3];
         //no llena porque no hay recetas
         
-        ResultSet rs = BD.datos(BD.select_receta());
+        ResultSet rs = BD.datos(BD.select_receta__eleccion());
         while(rs.next()){//Se hace el llenado de la tabla con los datos que se obtienen  de la consulta
             datos[0] = rs.getString(1);
             datos[1] = rs.getString(2);
@@ -143,6 +143,11 @@ public class Registrado_Usuario extends javax.swing.JFrame {
         });
 
         jButton4.setText("Añadir");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -239,7 +244,9 @@ public class Registrado_Usuario extends javax.swing.JFrame {
                     JOptionPane.ERROR_MESSAGE);
         } else {
             FinalProject rece = new FinalProject();
-            Receta a = new Receta(Tabla_Receta.getValueAt(Tabla_Receta.getSelectedRow(),0).toString(),Tabla_Receta.getValueAt(Tabla_Receta.getSelectedRow(),1).toString(),Tabla_Receta.getValueAt(Tabla_Receta.getSelectedRow(),2).toString());
+            Receta a = new Receta(Tabla_Receta.getValueAt(Tabla_Receta.getSelectedRow(),0).toString(),
+                                  Tabla_Receta.getValueAt(Tabla_Receta.getSelectedRow(),1).toString(),
+                                  Tabla_Receta.getValueAt(Tabla_Receta.getSelectedRow(),2).toString());
             rece.setRece(a);
             Registrado_Puntuar V1 = new Registrado_Puntuar();
             V1.setVisible(true);
@@ -277,6 +284,10 @@ public class Registrado_Usuario extends javax.swing.JFrame {
         V3.setLocationRelativeTo(null);
         this.setVisible(false);
     }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

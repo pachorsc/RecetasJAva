@@ -67,6 +67,11 @@ public class Registrado_Puntuar extends javax.swing.JFrame {
 
         Puntuacion_dar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Puntuacion_dar.setText("0 -10");
+        Puntuacion_dar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Puntuacion_darActionPerformed(evt);
+            }
+        });
 
         jButton8.setText("Puntuar");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
@@ -147,20 +152,48 @@ public class Registrado_Puntuar extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        int punt = Integer.parseInt(Puntuacion_dar.getText());
+        int punt; 
         
-        if (punt>10 || punt<0) {
+        if (Puntuacion_dar.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, 
-                        "La puntuacion está erronea",
+                        "puntuacion vacia",
                         "Error",
                     JOptionPane.ERROR_MESSAGE);
-        } else {
             
-            Puntuacion_dar.hide();
-            jButton8.hide();
+        }else {
+                try {
+                    punt = Integer.valueOf(Puntuacion_dar.getText());
+                    System.out.println("Converted integer: " + punt);
+
+                    if(punt>10 || punt<0) {
+                        JOptionPane.showMessageDialog(this, 
+                            "La puntuacion está erronea",
+                            "Error",
+                        JOptionPane.ERROR_MESSAGE);
+                    }else {
+                        Puntuacion_dar.hide();
+                        jButton8.hide();
+                    }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid integer input");
+                JOptionPane.showMessageDialog(this, 
+                        "Ha puesto letras en la puntuacion",
+                        "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            }
         }
         
+        
+        
+            
+            
+        
+        
     }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void Puntuacion_darActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Puntuacion_darActionPerformed
+       
+    }//GEN-LAST:event_Puntuacion_darActionPerformed
 
     /**
      * @param args the command line arguments
