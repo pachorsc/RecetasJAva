@@ -28,8 +28,6 @@ public class Resetas_Usuario extends javax.swing.JFrame {
         initComponents();
         jLabel1.setText(Sesion.getNom());
         BD.Conectar();
-        
-        DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Nombre");
         model.addColumn("ingredientes");
         model.addColumn("pasos");
@@ -50,7 +48,16 @@ public class Resetas_Usuario extends javax.swing.JFrame {
         Tabla_Receta.setModel(model);
         Tabla_Receta.setCellSelectionEnabled(false);
         Tabla_Receta.setRowSelectionAllowed(true);
+        
     }
+    DefaultTableModel model = new DefaultTableModel() {
+
+        @Override
+        public boolean isCellEditable(int row, int column) {
+           //all cells false
+           return false;
+        }
+    };
 
     /**
      * This method is called from within the constructor to initialize the form.

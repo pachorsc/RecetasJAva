@@ -26,8 +26,6 @@ public class Eleccion extends javax.swing.JFrame {
     public Eleccion() throws ClassNotFoundException, SQLException {
         initComponents();
         BD.Conectar();
-        
-        DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Nombre");
         model.addColumn("autor");
         model.addColumn("Puntuación");
@@ -48,9 +46,16 @@ public class Eleccion extends javax.swing.JFrame {
         Tabla_Receta.setModel(model);
         Tabla_Receta.setCellSelectionEnabled(false);
         Tabla_Receta.setRowSelectionAllowed(true);
-        
        
     }
+    DefaultTableModel model = new DefaultTableModel() {
+
+        @Override
+        public boolean isCellEditable(int row, int column) {
+           //all cells false
+           return false;
+        }
+    };
 
     /**
      * This method is called from within the constructor to initialize the form.
