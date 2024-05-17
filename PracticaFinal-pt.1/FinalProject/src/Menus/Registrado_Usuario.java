@@ -285,7 +285,10 @@ public class Registrado_Usuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        Añ_Rec_Usu V1 = new Añ_Rec_Usu();
+        V1.setVisible(true);
+        V1.setLocationRelativeTo(null);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**

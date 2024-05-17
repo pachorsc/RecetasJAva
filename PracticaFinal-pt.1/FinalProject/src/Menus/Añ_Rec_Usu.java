@@ -5,6 +5,7 @@
  */
 package Menus;
 
+import finalproject.BD;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -158,10 +159,12 @@ public class Añ_Rec_Usu extends javax.swing.JFrame {
         }
         else {
             try {
+                BD.basedatos(BD.insertar_rece(nuevoNom, receta, Sesion.getNom()));
                 Resetas_Usuario V4 = new Resetas_Usuario(nuevoNom);
                 V4.setVisible(true);
                 V4.setLocationRelativeTo(null);
                 this.setVisible(false);
+                
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(Añ_Rec_Usu.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {

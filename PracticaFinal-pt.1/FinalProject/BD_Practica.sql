@@ -15,7 +15,7 @@ CREATE TABLE RECETAS (
     autor varchar2(20),
     ingredientes varchar2(50),
     pasos varchar2(50),
-    constraint fk_re_us foreign key (autor) references USUARIOS(nombre) 
+    constraint fk_re_us foreign key (autor) references usuarios (nombre) 
 );
 
 CREATE TABLE ETIQUETAS(

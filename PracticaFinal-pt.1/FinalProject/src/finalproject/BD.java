@@ -64,6 +64,10 @@ public class BD {
       String consu = "insert into usuarios (nombre, contraseña) values ('"+ usu +"', '"+ cont +"')";
       return consu;
     }
+    static public String insertar_rece(String nombre, String pasos, String autor){
+        String consu = "insert into RECETAS (nombre, pasos, autor) values ('"+ nombre +"', '"+ pasos +"','"+autor+"')";
+        return consu;
+    }
     static public String select_usu(String usu){
         String consu = "select nombre from usuarios where nombre = '"+usu+"'";
         return consu;
