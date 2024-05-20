@@ -37,22 +37,14 @@ public class Eleccion extends javax.swing.JFrame {
         
         ResultSet receta = BD.datos(BD.select_receta());
         receta.next();
-        ResultSet usuario = BD.datos(BD.select_usu()+ BD.select_condicion("cod", receta.getString(3)));
-        usuario.next();
-        
+        System.out.println(receta.getString(1));
         do{//Se hace el llenado de la tabla con los datos que se obtienen  de la consulta
             datos[0] = receta.getString(2);
-            datos[1] = usuario.getString(3);
+            datos[1] = Sesion.getCod(receta.getString(3));
             datos[2] = receta.getString(5);
             
-            usuario = BD.datos(BD.select_usu()+ BD.select_condicion("cod", receta.getString(3)));
-            usuario.next();
             model.addRow(datos);
         }while(receta.next());
-        
-        Tabla_Receta.setModel(model);
-        Tabla_Receta.setCellSelectionEnabled(false);
-        Tabla_Receta.setRowSelectionAllowed(true);
        
     }
     DefaultTableModel model = new DefaultTableModel() {

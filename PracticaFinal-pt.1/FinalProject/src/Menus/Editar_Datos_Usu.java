@@ -193,8 +193,7 @@ public class Editar_Datos_Usu extends javax.swing.JFrame {
                 Logger.getLogger(Editar_Datos_Usu.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
                 Logger.getLogger(Editar_Datos_Usu.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            System.out.println("Usuario nuevo: "+usuario+" Usario antiguo: "+Sesion.getNom());            
+            }            
             
             BD.basedatos(BD.update("usuarios", "nombre", usuario, Sesion.getNom()));
             Sesion.setNomUsu(usuario);
