@@ -46,9 +46,10 @@ public class Resetas_Usuario extends javax.swing.JFrame {
             datos[0] = receta.getString(2);
             datos[1] = usuario.getString(3);
             datos[2] = receta.getString(5);
-            model.addRow(datos);
+            
             usuario = BD.datos(BD.select_usu()+ BD.select_condicion("cod", receta.getString(3)));
             usuario.next();
+            model.addRow(datos);
         }while(receta.next());
         
         Tabla_Receta.setModel(model);
