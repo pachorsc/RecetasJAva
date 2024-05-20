@@ -37,10 +37,11 @@ public class Eleccion extends javax.swing.JFrame {
         
         ResultSet receta = BD.datos(BD.select_receta());
         receta.next();
-        System.out.println(receta.getString(1));
+        
         do{//Se hace el llenado de la tabla con los datos que se obtienen  de la consulta
+            receta.next();
             datos[0] = receta.getString(2);
-            datos[1] = Sesion.getCod(receta.getString(3));
+            datos[1] = receta.getString(3);
             datos[2] = receta.getString(5);
             
             model.addRow(datos);
