@@ -1,10 +1,13 @@
+drop table receta_etiqueta;
+drop table puntuaciones;
 drop table recetas;
 drop table usuarios;
 drop table etiquetas;
-drop table receta_etiqueta;
+
 
 CREATE TABLE USUARIOS (
-    nombre varchar2(20) primary key,
+    cod integer GENERATED ALWAYS AS IDENTITY (Start with 1 increment by 1) primary key,
+    nombre varchar2(20) unique,
     contraseña varchar2(20) not null,
     rol number(1) default 0 check (rol between 0 and 1)
 );
@@ -12,10 +15,10 @@ CREATE TABLE USUARIOS (
 CREATE TABLE RECETAS (
     cod integer GENERATED ALWAYS AS IDENTITY (Start with 1 increment by 1) primary key,
     nombre varchar2(20) not null,
-    autor varchar2(20),
+    autor integer,
     ingredientes varchar2(50),
     pasos varchar2(50),
-    constraint fk_re_us foreign key (autor) references usuarios (nombre) 
+    constraint fk_re_us foreign key (autor) references usuarios(cod) 
 );
 
 CREATE TABLE ETIQUETAS(
@@ -29,7 +32,17 @@ CREATE TABLE RECETA_ETIQUETA(
     CONSTRAINT pk_re_et primary key(receta, etiqueta)
 );
 
-insert into USUARIOS values ('ADMIN', 'ADMIN', 1);
+CREATE TABLE PUNTUACIONES (
+    usuario integer,
+    receta integer,
+    nota number(2,0) check(nota between 0 and 10) not null,
+    comentario varchar2(100),
+    CONSTRAINT pk_punt primary key (usuario, receta),
+    CONSTRAINT fk_pun_rec foreign key (receta) references recetas(cod),
+    CONSTRAINT fk_pun_usu foreign key (usuario) references usuarios(cod)
+);
+
+insert into USUARIOS (nombre, contraseña, rol) values ('ADMIN', 'ADMIN', 1);
 
 insert into ETIQUETAS (nombre) values ('Desayuno');
 insert into ETIQUETAS (nombre) values ('Almuerzo');
@@ -40,7 +53,7 @@ insert into ETIQUETAS (nombre) values ('Carne');
 insert into ETIQUETAS (nombre) values ('Vegetariano');
 insert into ETIQUETAS (nombre) values ('Sano');
 
-insert into recetas (nombre, autor , ingredientes, pasos) values('huevo', 'ADMIN', 'hueso', 'no se');
-insert into recetas (nombre, autor , ingredientes, pasos) values('hue', 'ADMIN', 'hueso', 'no se');
+insert into recetas (nombre, autor , ingredientes, pasos) values('huevo', 1, 'hueso', 'no se');
+insert into recetas (nombre, autor , ingredientes, pasos) values('hue', 1, 'hueso', 'no se');
 
 commit;
