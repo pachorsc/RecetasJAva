@@ -189,8 +189,8 @@ public class Iniciar_Se extends javax.swing.JFrame {
             }  else try {
                 String nU = Text_Usu.getText();
                 String pass = String.copyValueOf(Text_cont.getPassword());
-                if (BD.coincide(BD.select_usu(nU))) {
-                    if (BD.coincide(BD.select_cont(pass))) {
+                if (BD.coincide(BD.select_usu()+BD.select_condicion("nombre", nU))) {
+                    if (BD.coincide(BD.select_usu()+BD.select_condicion("nombre", nU)+BD.select_condicion_and("contraseña", pass))) {
                         System.out.println("inicio de sesion hecha");
                         Registrado_Usuario V1 = new Registrado_Usuario(nU);
                         V1.setVisible(true);

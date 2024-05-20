@@ -171,7 +171,8 @@ public class Editar_Receta extends javax.swing.JFrame {
         else {
             try {
                 System.out.println(Sesion.getNom());
-                BD.basedatos(BD.editar_receta(nuevoNom, receta, Sesion.getNom() , FinalProject.getRece().getPasos()));
+                BD.basedatos(BD.update("recetas",  "autor", nuevoNom, Sesion.getNom()));
+                BD.basedatos(BD.update("recetas", "pasos", nuevoNom, FinalProject.getRece().getPasos()));
                 Resetas_Usuario V4 = new Resetas_Usuario(Sesion.getNom());
                 V4.setVisible(true);
                 V4.setLocationRelativeTo(null);

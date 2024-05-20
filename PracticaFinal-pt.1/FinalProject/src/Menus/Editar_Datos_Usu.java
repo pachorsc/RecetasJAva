@@ -196,8 +196,7 @@ public class Editar_Datos_Usu extends javax.swing.JFrame {
             }
             System.out.println("Usuario nuevo: "+usuario+" Usario antiguo: "+Sesion.getNom());            
             
-            BD.basedatos(BD.update_recetas(usuario, Sesion.getNom()));
-            BD.basedatos(BD.update_usuario(usuario, Sesion.getNom()));
+            BD.basedatos(BD.update("usuarios", "nombre", usuario, Sesion.getNom()));
             Sesion.setNomUsu(usuario);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Editar_Datos_Usu.class.getName()).log(Level.SEVERE, null, ex);

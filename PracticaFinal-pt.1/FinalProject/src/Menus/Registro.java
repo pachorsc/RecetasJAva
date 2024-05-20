@@ -192,10 +192,9 @@ public class Registro extends javax.swing.JFrame {
                     JOptionPane.ERROR_MESSAGE);
         } else if(contraseña.equals(contraseña2)){
             //meter en base de datso
-            BD conexion = new BD();
             try {
                 //si ya existe en la base de datos
-                if (conexion.coincide(conexion.select_usu(usuario))) {
+                if (BD.coincide(BD.select_usu()+BD.select_condicion("nombre", usuario))) {
                     JOptionPane.showMessageDialog(this, 
                         "Usuario ya Existente",
                         "Error",
@@ -204,7 +203,7 @@ public class Registro extends javax.swing.JFrame {
                     try {
                     //meter en la base de datos 
                     
-                        conexion.basedatos(conexion.insertar_usu(usuario, contraseña));
+                        BD.basedatos(BD.insertar_usu(usuario, contraseña));
                         
                         //llenar el objeto de uuario
 

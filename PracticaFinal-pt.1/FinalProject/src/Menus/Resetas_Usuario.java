@@ -37,13 +37,19 @@ public class Resetas_Usuario extends javax.swing.JFrame {
         String datos[] = new String[3];
         //no llena porque no hay recetas
         
-        ResultSet rs = BD.datos(BD.select_receta__usu(Sesion.getNom()));
-        while(rs.next()){//Se hace el llenado de la tabla con los datos que se obtienen  de la consulta
-            datos[0] = rs.getString(1);
-            datos[1] = rs.getString(2);
-            datos[2] = rs.getString(3);
+        ResultSet receta = BD.datos(BD.select_receta());
+        receta.next();
+        ResultSet usuario = BD.datos(BD.select_usu()+ BD.select_condicion("cod", receta.getString(3)));
+        usuario.next();
+        System.out.println(receta.getString(1));
+        do{//Se hace el llenado de la tabla con los datos que se obtienen  de la consulta
+            datos[0] = receta.getString(2);
+            datos[1] = usuario.getString(3);
+            datos[2] = receta.getString(5);
             model.addRow(datos);
-        }
+            usuario = BD.datos(BD.select_usu()+ BD.select_condicion("cod", receta.getString(3)));
+            usuario.next();
+        }while(receta.next());
         
         Tabla_Receta.setModel(model);
         Tabla_Receta.setCellSelectionEnabled(false);
