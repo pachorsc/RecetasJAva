@@ -49,6 +49,11 @@ public class Iniciar_Se extends javax.swing.JFrame {
         setResizable(false);
 
         jPanel1.setPreferredSize(new java.awt.Dimension(625, 559));
+        jPanel1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jPanel1KeyPressed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setText("Iniciar Sesión");
@@ -92,6 +97,11 @@ public class Iniciar_Se extends javax.swing.JFrame {
         Text_cont.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Text_contActionPerformed(evt);
+            }
+        });
+        Text_cont.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Text_contKeyPressed(evt);
             }
         });
 
@@ -242,6 +252,18 @@ public class Iniciar_Se extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Text_contActionPerformed
 
+    private void jPanel1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPanel1KeyPressed
+        presionado(evt.getKeyCode());
+    }//GEN-LAST:event_jPanel1KeyPressed
+
+    private void Text_contKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Text_contKeyPressed
+        presionado(evt.getKeyCode());
+    }//GEN-LAST:event_Text_contKeyPressed
+    private void presionado(int a){
+        if (a ==10) {
+            Boton_Entrar.doClick();
+        }
+    }
     /**
      * @param args the command line arguments
      */

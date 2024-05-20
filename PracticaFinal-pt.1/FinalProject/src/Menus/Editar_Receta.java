@@ -6,6 +6,7 @@ package Menus;
 
 import finalproject.BD;
 import finalproject.FinalProject;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -171,8 +172,10 @@ public class Editar_Receta extends javax.swing.JFrame {
         else {
             try {
                 System.out.println(Sesion.getNom());
-                BD.basedatos(BD.update("recetas",  "autor", nuevoNom, Sesion.getNom()));
-                BD.basedatos(BD.update("recetas", "pasos", nuevoNom, FinalProject.getRece().getPasos()));
+                BD.basedatos(BD.update("recetas", "pasos",nuevoNom , FinalProject.getRece().getPasos()));
+                BD.basedatos(BD.update("recetas", "NOMBRE",nuevoNom , FinalProject.getRece().getPasos()));
+ 
+                
                 Resetas_Usuario V4 = new Resetas_Usuario(Sesion.getNom());
                 V4.setVisible(true);
                 V4.setLocationRelativeTo(null);
