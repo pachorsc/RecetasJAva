@@ -19,7 +19,6 @@ import javax.swing.table.DefaultTableModel;
  * @author Admin
  */
 public class Eleccion extends javax.swing.JFrame {
-
     /**
      * Creates new form Eleccion
      */

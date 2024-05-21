@@ -5,6 +5,8 @@
  */
 package Menus;
 
+import finalproject.BD;
+import finalproject.FinalProject;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,6 +23,7 @@ public class Admin_CambiarRecetea extends javax.swing.JFrame {
      */
     public Admin_CambiarRecetea() {
         initComponents();
+        jLabel3.setText(FinalProject.getRece().getNombre());
     }
 
     /**
@@ -41,6 +44,7 @@ public class Admin_CambiarRecetea extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         Cambio_recet = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/home.png"))); // NOI18N
         jButton7.setText("Volver");
@@ -82,6 +86,8 @@ public class Admin_CambiarRecetea extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setText("jLabel3");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -90,6 +96,10 @@ public class Admin_CambiarRecetea extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jButton8)
                 .addContainerGap(577, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(277, 277, 277))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(218, 218, 218)
@@ -113,7 +123,9 @@ public class Admin_CambiarRecetea extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton8)
-                .addContainerGap(515, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(436, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(181, 181, 181)
@@ -162,7 +174,7 @@ public class Admin_CambiarRecetea extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         try {
-            Registrado_Usuario V3 = new Registrado_Usuario(Sesion.getNom());
+            Registrado_Admin V3 = new Registrado_Admin();
             V3.setVisible(true);
             V3.setLocationRelativeTo(null);
             this.setVisible(false);
@@ -185,6 +197,10 @@ public class Admin_CambiarRecetea extends javax.swing.JFrame {
         }
         else {
             try {
+                System.out.println(Sesion.getNom());
+                BD.basedatos(BD.update("recetas", "NOMBRE", nuevoNom , FinalProject.getRece().getPasos()));
+                BD.basedatos(BD.update("recetas", "pasos", receta , FinalProject.getRece().getPasos()));
+
                 Registrado_Admin V4 = new Registrado_Admin();
                 V4.setVisible(true);
                 V4.setLocationRelativeTo(null);
@@ -240,6 +256,7 @@ public class Admin_CambiarRecetea extends javax.swing.JFrame {
     private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

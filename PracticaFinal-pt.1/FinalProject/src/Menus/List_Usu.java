@@ -135,7 +135,7 @@ public class List_Usu extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         try {
-            Registrado_Usuario V3 = new Registrado_Usuario("a");
+            Registrado_Admin V3 = new Registrado_Admin();
             V3.setVisible(true);
             V3.setLocationRelativeTo(null);
             this.setVisible(false);
@@ -148,7 +148,7 @@ public class List_Usu extends javax.swing.JFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         try {
-            Registrado_Usuario V3 = new Registrado_Usuario(Sesion.getNom());
+            Registrado_Admin V3 = new Registrado_Admin();
             V3.setVisible(true);
             V3.setLocationRelativeTo(null);
             this.setVisible(false);        // TODO add your handling code here:

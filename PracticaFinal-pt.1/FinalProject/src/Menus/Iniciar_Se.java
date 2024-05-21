@@ -7,6 +7,7 @@ package Menus;
 import finalproject.BD;
 import finalproject.FinalProject;
 import finalproject.Usuario;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -197,17 +198,30 @@ public class Iniciar_Se extends javax.swing.JFrame {
                         "Error",
                         JOptionPane.ERROR_MESSAGE);
             }  else try {
+                
+                
                 String nU = Text_Usu.getText();
                 String pass = String.copyValueOf(Text_cont.getPassword());
                 if (BD.coincide(BD.select_usu()+BD.select_condicion("nombre", nU))) {
                     if (BD.coincide(BD.select_usu()+BD.select_condicion("nombre", nU)+BD.select_condicion_and("contraseña", pass))) {
+                        
                         System.out.println("inicio de sesion hecha");
+                        Sesion.setNomUsu(nU);
+                        ResultSet a = BD.datos(BD.select_usu()+BD.select_condicion("nombre", Sesion.getNom()));
+                        a.next();
+                        if (a.getInt(4) == 1) {
+                            System.out.println("entro a menuadmin");
+                            Registrado_Admin V2 = new Registrado_Admin();
+                            V2.setVisible(true);
+                            V2.setLocationRelativeTo(null);
+                            this.setVisible(false);
+                        } else {
                         Registrado_Usuario V1 = new Registrado_Usuario(nU);
                         V1.setVisible(true);
                         V1.setLocationRelativeTo(null);
                         this.setVisible(false);
+                        }
                         
-                        Sesion.setNomUsu(nU);
                         
                     } else  {
                         JOptionPane.showMessageDialog(this,

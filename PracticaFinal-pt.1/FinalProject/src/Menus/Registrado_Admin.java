@@ -6,6 +6,8 @@
 package Menus;
 
 import finalproject.BD;
+import finalproject.FinalProject;
+import finalproject.Receta;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -27,7 +29,7 @@ public class Registrado_Admin extends javax.swing.JFrame {
         BD.Conectar();
         model.addColumn("Nombre");
         model.addColumn("autor");
-        model.addColumn("pasos");
+        model.addColumn("Puntuación");
         Tabla_Receta.setModel(model);
         
         //limite del estring es el count de la recetas totales
@@ -36,18 +38,17 @@ public class Registrado_Admin extends javax.swing.JFrame {
         
         ResultSet receta = BD.datos(BD.select_receta());
         receta.next();
-        System.out.println(receta.getString(1));
+        ResultSet usu;
+        
         do{//Se hace el llenado de la tabla con los datos que se obtienen  de la consulta
+            usu = BD.datos(BD.select_usu()+BD.select_condicion("cod", receta.getString(3)));
+            usu.next();
             datos[0] = receta.getString(2);
-            datos[1] = Sesion.getCod(receta.getString(3));
+            datos[1] = usu.getString(2);
             datos[2] = receta.getString(5);
-            
             model.addRow(datos);
         }while(receta.next());
-        
-        Tabla_Receta.setModel(model);
-        Tabla_Receta.setCellSelectionEnabled(false);
-        Tabla_Receta.setRowSelectionAllowed(true);
+       
     }
     DefaultTableModel model = new DefaultTableModel() {
 
@@ -81,7 +82,6 @@ public class Registrado_Admin extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1240, 713));
         setMinimumSize(new java.awt.Dimension(1240, 713));
         setResizable(false);
 
@@ -131,7 +131,7 @@ public class Registrado_Admin extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Usuario");
+        jButton4.setText("Usuarios");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -165,7 +165,7 @@ public class Registrado_Admin extends javax.swing.JFrame {
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 228, Short.MAX_VALUE)
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(72, 72, 72)
                         .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -246,16 +246,10 @@ public class Registrado_Admin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        try {
-            Resetas_Usuario V1 = new Resetas_Usuario(Sesion.getNom());
-            V1.setVisible(true);
-            V1.setLocationRelativeTo(null);
-            this.setVisible(false);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Registrado_Admin.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(Registrado_Admin.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        List_Usu V1 = new List_Usu();
+        V1.setVisible(true);
+        V1.setLocationRelativeTo(null);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
@@ -279,6 +273,15 @@ public class Registrado_Admin extends javax.swing.JFrame {
                 "Fila no elegida",
                 "ERROR",
                 JOptionPane.ERROR_MESSAGE);
+        } else {
+            Receta a = new Receta(Tabla_Receta.getValueAt(Tabla_Receta.getSelectedRow(),0).toString(),
+                                  Tabla_Receta.getValueAt(Tabla_Receta.getSelectedRow(),1).toString(),
+                                  Tabla_Receta.getValueAt(Tabla_Receta.getSelectedRow(),2).toString());
+            FinalProject.setRece(a);
+            Admin_Puntuar V1 = new Admin_Puntuar();
+            V1.setVisible(true);
+            V1.setLocationRelativeTo(null);
+            this.setVisible(false);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -287,7 +290,10 @@ public class Registrado_Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+        Añadir_Receta_Admin V1 = new Añadir_Receta_Admin();
+        V1.setVisible(true);
+        V1.setLocationRelativeTo(null);
+        this.setVisible(false);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -297,7 +303,15 @@ int row = Tabla_Receta.getSelectedRow();
                 "Fila no elegida",
                 "ERROR",
                 JOptionPane.ERROR_MESSAGE);
-        }        // TODO add your handling code here:
+        }else {
+            Receta a = new Receta(Tabla_Receta.getValueAt(Tabla_Receta.getSelectedRow(),0).toString(),
+                                  Tabla_Receta.getValueAt(Tabla_Receta.getSelectedRow(),2).toString());
+            FinalProject.setRece(a);
+            Admin_CambiarRecetea V1 = new Admin_CambiarRecetea();
+            V1.setVisible(true);
+            V1.setLocationRelativeTo(null);
+            this.setVisible(false);   
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
