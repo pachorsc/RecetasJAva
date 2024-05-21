@@ -38,14 +38,18 @@ public class Registrado_Admin extends javax.swing.JFrame {
         
         ResultSet receta = BD.datos(BD.select_receta());
         receta.next();
+        ResultSet puntuaciones;
         ResultSet usu;
         
         do{//Se hace el llenado de la tabla con los datos que se obtienen  de la consulta
+            datos[2]="";
             usu = BD.datos(BD.select_usu()+BD.select_condicion("cod", receta.getString(3)));
+            puntuaciones= BD.datos(BD.select("count(*), sum(nota)","puntuaciones")+BD.select_condicion("receta", receta.getString(3)));
+            puntuaciones.next();
             usu.next();
             datos[0] = receta.getString(2);
             datos[1] = usu.getString(2);
-            datos[2] = receta.getString(5);
+            datos[2] += puntuaciones.getFloat(2)/ puntuaciones.getFloat(1);
             model.addRow(datos);
         }while(receta.next());
        
@@ -246,10 +250,16 @@ public class Registrado_Admin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        List_Usu V1 = new List_Usu();
-        V1.setVisible(true);
-        V1.setLocationRelativeTo(null);
-        this.setVisible(false);
+        try {
+            List_Usu V1 = new List_Usu();
+            V1.setVisible(true);
+            V1.setLocationRelativeTo(null);
+            this.setVisible(false);
+        } catch (SQLException ex) {
+            Logger.getLogger(Registrado_Admin.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Registrado_Admin.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed

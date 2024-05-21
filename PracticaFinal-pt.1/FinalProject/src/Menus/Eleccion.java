@@ -48,6 +48,9 @@ public class Eleccion extends javax.swing.JFrame {
             datos[2] += puntuaciones.getFloat(2)/ puntuaciones.getFloat(1);
             model.addRow(datos);
         }while(receta.next());
+        Tabla_Receta.setModel(model);
+        Tabla_Receta.setCellSelectionEnabled(false);
+        Tabla_Receta.setRowSelectionAllowed(true);
        
     }
     DefaultTableModel model = new DefaultTableModel() {
