@@ -31,9 +31,7 @@ public class Eleccion extends javax.swing.JFrame {
         model.addColumn("Puntuación");
         Tabla_Receta.setModel(model);
         
-        //limite del estring es el count de la recetas totales
         String datos[] = new String[3];
-        //no llena porque no hay recetas
         
         ResultSet receta = BD.datos(BD.select_receta());
         receta.next();
