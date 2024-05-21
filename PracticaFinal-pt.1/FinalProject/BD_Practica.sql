@@ -14,10 +14,10 @@ CREATE TABLE USUARIOS (
 
 CREATE TABLE RECETAS (
     cod integer GENERATED ALWAYS AS IDENTITY (Start with 1 increment by 1) primary key,
-    nombre varchar2(20) not null,
+    nombre varchar2(50) not null,
     autor integer,
-    ingredientes varchar2(50),
-    pasos varchar2(50),
+    ingredientes varchar2(100),
+    pasos varchar2(500),
     constraint fk_re_us foreign key (autor) references usuarios(cod) 
 );
 
@@ -43,8 +43,8 @@ CREATE TABLE PUNTUACIONES (
 );
 
 insert into USUARIOS (nombre, contraseña, rol) values ('ADMIN', 'ADMIN', 1);
-insert into USUARIOS (nombre, contraseña) values ('pacho', 'pacho', 0);
-insert into USUARIOS (nombre, contraseña) values ('dani', 'dani', 0);
+insert into USUARIOS (nombre, contraseña) values ('pacho', 'pacho');
+insert into USUARIOS (nombre, contraseña) values ('dani', 'dani');
 
 insert into recetas (nombre, autor , ingredientes, pasos) values('huevo frito', 1, 'huevo, aceite, oregano y pimienta', 'romper el huevo y freirlo en la sarten, posteriormente condimentar');
 insert into recetas (nombre, autor , ingredientes, pasos) values('Galletas de chocolate', 1, 'huevo, miel, harina, mantequilla y chocolate', 'Bate los huevos con la harina y la mantequilla, añade el chocolate y mete en el horno 10 minutos');

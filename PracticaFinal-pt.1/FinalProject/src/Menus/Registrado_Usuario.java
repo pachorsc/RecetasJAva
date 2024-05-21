@@ -33,16 +33,16 @@ public class Registrado_Usuario extends javax.swing.JFrame {
         
         //limite del string es el count de la recetas totales
         String datos[] = new String[3];
-        //no llena porque no hay recetas
-        
         ResultSet receta = BD.datos(BD.select_receta());
         receta.next();
-        System.out.println(receta.getString(1));
+        ResultSet usu;
+        
         do{//Se hace el llenado de la tabla con los datos que se obtienen  de la consulta
+            usu = BD.datos(BD.select_usu()+BD.select_condicion("cod", receta.getString(3)));
+            usu.next();
             datos[0] = receta.getString(2);
-            datos[1] = Sesion.getCod(receta.getString(3));
+            datos[1] = usu.getString(2);
             datos[2] = receta.getString(5);
-            
             model.addRow(datos);
         }while(receta.next());
         
