@@ -196,6 +196,15 @@ public class Editar_Datos_Usu extends javax.swing.JFrame {
             }            
             
             BD.basedatos(BD.update("usuarios", "nombre", usuario, Sesion.getNom()));
+            if (contraseña.equals(contraseña2)){
+                BD.basedatos(BD.update("usuarios", "contraseña", Sesion.getNom(), Sesion.getNom()));
+            } else {
+                JOptionPane.showMessageDialog(this, 
+                        "contraseñas no coinciden",
+                        "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            }
+            BD.basedatos(BD.update("usuarios", "contraseña", contraseña, Sesion.getNom()));
             Sesion.setNomUsu(usuario);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Editar_Datos_Usu.class.getName()).log(Level.SEVERE, null, ex);

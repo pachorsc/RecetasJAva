@@ -70,6 +70,10 @@ public class BD {
     }
     
     //SELECT
+    static public String select(String select, String tabla){
+        String consu = "select "+select+" from "+tabla;
+        return consu;
+    }
     static public String select_usu(){
         String consu = "select * from usuarios";
         return consu;

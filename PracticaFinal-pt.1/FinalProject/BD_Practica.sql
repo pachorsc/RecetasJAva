@@ -22,13 +22,12 @@ CREATE TABLE RECETAS (
 );
 
 CREATE TABLE ETIQUETAS(
-    cod integer GENERATED ALWAYS AS IDENTITY (Start with 1 increment by 1) primary key,
-    nombre varchar2(20) not null
+    nombre varchar2(20) primary key
 );
 
 CREATE TABLE RECETA_ETIQUETA(
     receta integer,
-    etiqueta number(2,0),
+    etiqueta varchar2(20),
     CONSTRAINT pk_re_et primary key(receta, etiqueta)
 );
 
@@ -61,4 +60,20 @@ insert into ETIQUETAS (nombre) values ('Carne');
 insert into ETIQUETAS (nombre) values ('Vegetariano');
 insert into ETIQUETAS (nombre) values ('Sano');
 
+insert into PUNTUACIONES values (1, 1, 10, 'Buenisima');
+insert into PUNTUACIONES values (1, 2, 2, 'Vaya mierda');
+insert into PUNTUACIONES values (1, 3, 1, 'Vaya mierda');
+insert into PUNTUACIONES values (2, 1, 1, 'Vaya mierda');
+insert into PUNTUACIONES values (2, 2, 10, 'Buenisima');
+insert into PUNTUACIONES values (2, 3, 10, 'Buenisima');
+
+insert into RECETA_ETIQUETA values (1, 'Desayuno');
+insert into RECETA_ETIQUETA values (1, 'Salado');
+insert into RECETA_ETIQUETA values (2, 'Desayuno');
+insert into RECETA_ETIQUETA values (2, 'Dulce');
+insert into RECETA_ETIQUETA values (3, 'Desayuno');
+insert into RECETA_ETIQUETA values (3, 'Salado');
+insert into RECETA_ETIQUETA values (4, 'Almuerzo');
+insert into RECETA_ETIQUETA values (4, 'Carne');
+insert into RECETA_ETIQUETA values (5, 'Salado');
 commit;
