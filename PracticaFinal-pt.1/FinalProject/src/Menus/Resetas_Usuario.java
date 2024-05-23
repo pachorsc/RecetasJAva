@@ -28,28 +28,29 @@ public class Resetas_Usuario extends javax.swing.JFrame {
         initComponents();
         jLabel1.setText(Sesion.getNom());
         BD.Conectar();
-        model.addColumn("Nombre");
-        model.addColumn("ingredientes");
-        model.addColumn("pasos");
-        Tabla_Receta.setModel(model);
-        
-        //limite del estring es el count de la recetas totales
-        String datos[] = new String[3];
-        
-        System.out.println(Sesion.getCod(Sesion.getNom()));    
-        ResultSet receta = BD.datos(BD.select_receta()+BD.select_condicion("autor", Sesion.getCod(Sesion.getNom())));
-        receta.next();
-        do{//Se hace el llenado de la tabla con los datos que se obtienen  de la consulta
-            datos[0] = receta.getString(2);
-            datos[1] = receta.getString(4);
-            datos[2] = receta.getString(5);
-            model.addRow(datos);
-        }while(receta.next());
-        
-        Tabla_Receta.setModel(model);
-        Tabla_Receta.setCellSelectionEnabled(false);
-        Tabla_Receta.setRowSelectionAllowed(true);
-        
+        if(BD.coincide(BD.select_receta()+BD.select_condicion("autor", Sesion.getCod(Sesion.getNom())))){
+            model.addColumn("Nombre");
+            model.addColumn("ingredientes");
+            model.addColumn("pasos");
+            Tabla_Receta.setModel(model);
+
+            //limite del estring es el count de la recetas totales
+            String datos[] = new String[3];
+
+            System.out.println(Sesion.getCod(Sesion.getNom()));    
+            ResultSet receta = BD.datos(BD.select_receta()+BD.select_condicion("autor", Sesion.getCod(Sesion.getNom())));
+            receta.next();
+            do{//Se hace el llenado de la tabla con los datos que se obtienen  de la consulta
+                datos[0] = receta.getString(2);
+                datos[1] = receta.getString(4);
+                datos[2] = receta.getString(5);
+                model.addRow(datos);
+            }while(receta.next());
+
+            Tabla_Receta.setModel(model);
+            Tabla_Receta.setCellSelectionEnabled(false);
+            Tabla_Receta.setRowSelectionAllowed(true);
+        }
     }
     DefaultTableModel model = new DefaultTableModel() {
 
