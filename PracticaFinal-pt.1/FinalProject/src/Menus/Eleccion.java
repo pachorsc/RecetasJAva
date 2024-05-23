@@ -7,7 +7,6 @@ package Menus;
 import java.sql.*;
 import finalproject.BD;
 import finalproject.FinalProject;
-import finalproject.Receta;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,17 +37,15 @@ public class Eleccion extends javax.swing.JFrame {
         ResultSet usu;
         
         do{//Se hace el llenado de la tabla con los datos que se obtienen  de la consulta
-            datos[2]="Sin puntuar"
+            datos[2]="Sin puntuar";
             usu = BD.datos(BD.select_usu()+BD.select_condicion("cod", receta.getString(3)));
             puntuaciones= BD.datos(BD.select("count(*), sum(nota)","puntuaciones")+BD.select_condicion("receta", receta.getString(3)));
             puntuaciones.next();
             usu.next();
             datos[0] = receta.getString(2);
             datos[1] = usu.getString(2);
-            if(puntuaciones!=null){
+            if(puntuaciones.getFloat(1)!=0){
                 datos[2] = ""+ puntuaciones.getFloat(2)/ puntuaciones.getFloat(1);
-            }else{
-                
             }
             model.addRow(datos);
         }while(receta.next());
@@ -254,13 +251,13 @@ public class Eleccion extends javax.swing.JFrame {
                 "ERROR",
                 JOptionPane.ERROR_MESSAGE);
         } else {
-            FinalProject rece = new FinalProject();
-            Receta a = new Receta(Tabla_Receta.getValueAt(Tabla_Receta.getSelectedRow(),0).toString(),Tabla_Receta.getValueAt(Tabla_Receta.getSelectedRow(),1).toString(),Tabla_Receta.getValueAt(Tabla_Receta.getSelectedRow(),2).toString());
-            rece.setRece(a);
+            
             Ver_Receta V1 = new Ver_Receta();
             V1.setVisible(true);
             V1.setLocationRelativeTo(null);
             this.setVisible(false);
+            
+            
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 

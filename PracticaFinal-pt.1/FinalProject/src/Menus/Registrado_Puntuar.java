@@ -4,6 +4,8 @@
  */
 package Menus;
 
+import java.sql.*;
+import finalproject.BD;
 import finalproject.FinalProject;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -19,10 +21,12 @@ public class Registrado_Puntuar extends javax.swing.JFrame {
     /**
      * Creates new form Registrado_Puntuar
      */
-    public Registrado_Puntuar() {
+    public Registrado_Puntuar() throws ClassNotFoundException, SQLException {
         initComponents();
         jLabel1.setText(FinalProject.getRece().getNombre());
-        Texto_Receta.setText(FinalProject.getRece().getPasos());
+        ResultSet rece = BD.datos(BD.select("pasos", "recetas")+BD.select_condicion("nombre",FinalProject.getRece().getNombre()));
+        rece.next();
+        Texto_Receta.setText(rece.getString(1));
     }
 
     /**
