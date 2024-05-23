@@ -27,6 +27,13 @@ public class Registrado_Puntuar extends javax.swing.JFrame {
         ResultSet rece = BD.datos(BD.select("pasos", "recetas")+BD.select_condicion("nombre",FinalProject.getRece().getNombre()));
         rece.next();
         Texto_Receta.setText(rece.getString(1));
+        
+        ResultSet pun = BD.datos(BD.select("cod","recetas")+BD.select_condicion("nombre",FinalProject.getRece().getNombre()));
+        pun.next();
+        if (BD.coincide(BD.select("count(*)","puntuaciones")+BD.select_condicion("receta",pun.getString(1))+BD.select_condicion_and("usuario",Sesion.getCod(Sesion.getNom())))) {
+            Puntuacion_dar.hide();
+            jButton8.hide();               
+        }
     }
 
     /**
@@ -156,45 +163,56 @@ public class Registrado_Puntuar extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        int punt; 
-        
-        if (Puntuacion_dar.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, 
+        try {
+            int punt;
+            ResultSet pun = BD.datos(BD.select("cod","recetas")+BD.select_condicion("nombre",FinalProject.getRece().getNombre()));
+            if (BD.coincide(BD.select("count(*)","recetas")+BD.select_condicion("receta",pun.getString(1))+BD.select_condicion_and("usuario",Sesion.getCod(Sesion.getNom())))) {
+                Puntuacion_dar.hide();
+                jButton8.hide();               
+            }
+            
+            if (Puntuacion_dar.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, 
                         "puntuacion vacia",
                         "Error",
-                    JOptionPane.ERROR_MESSAGE);
-            
-        }else {
+                        JOptionPane.ERROR_MESSAGE);
+                
+            }else {
                 try {
                     punt = Integer.valueOf(Puntuacion_dar.getText());
                     System.out.println("Converted integer: " + punt);
 
                     if(punt>10 || punt<0) {
-                        JOptionPane.showMessageDialog(this, 
-                            "La puntuacion está erronea",
-                            "Error",
-                        JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(this,
+                                "La puntuacion está erronea",
+                                "Error",
+                                JOptionPane.ERROR_MESSAGE);
                     }else {
                         Puntuacion_dar.hide();
                         jButton8.hide();
                         
                         String receta_usu = "";
-                        ResultSet pun = BD.datos(BD.select("cod","recetas")+BD.select_condicion("nombre",FinalProject.getRece().getNombre()));
+                        pun = BD.datos(BD.select("cod","recetas")+BD.select_condicion("nombre",FinalProject.getRece().getNombre()));
                         pun.next();
                         receta_usu=Sesion.getCod(Sesion.getNom())+", "+pun.getString(1)+", "+Puntuacion_dar.getText();
                         BD.basedatos(BD.insertar("puntuaciones (usuario, receta, nota)",receta_usu));
                     }
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid integer input");
-                JOptionPane.showMessageDialog(this, 
-                        "Ha puesto letras en la puntuacion",
-                        "Error",
-                    JOptionPane.ERROR_MESSAGE);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(Registrado_Puntuar.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SQLException ex) {
-                Logger.getLogger(Registrado_Puntuar.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid integer input");
+                    JOptionPane.showMessageDialog(this,
+                            "Ha puesto letras en la puntuacion",
+                            "Error",
+                            JOptionPane.ERROR_MESSAGE);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Registrado_Puntuar.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Registrado_Puntuar.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Registrado_Puntuar.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Registrado_Puntuar.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         
