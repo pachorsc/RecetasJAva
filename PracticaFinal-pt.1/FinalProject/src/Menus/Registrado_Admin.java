@@ -286,14 +286,20 @@ public class Registrado_Admin extends javax.swing.JFrame {
                 "ERROR",
                 JOptionPane.ERROR_MESSAGE);
         } else {
-            Receta a = new Receta(Tabla_Receta.getValueAt(Tabla_Receta.getSelectedRow(),0).toString(),
-                                  Tabla_Receta.getValueAt(Tabla_Receta.getSelectedRow(),1).toString(),
-                                  Tabla_Receta.getValueAt(Tabla_Receta.getSelectedRow(),2).toString());
-            FinalProject.setRece(a);
-            Admin_Puntuar V1 = new Admin_Puntuar();
-            V1.setVisible(true);
-            V1.setLocationRelativeTo(null);
-            this.setVisible(false);
+            try {
+                Receta a = new Receta(Tabla_Receta.getValueAt(Tabla_Receta.getSelectedRow(),0).toString(),
+                        Tabla_Receta.getValueAt(Tabla_Receta.getSelectedRow(),1).toString(),
+                        Tabla_Receta.getValueAt(Tabla_Receta.getSelectedRow(),2).toString());
+                FinalProject.setRece(a);
+                Admin_Puntuar V1 = new Admin_Puntuar();
+                V1.setVisible(true);
+                V1.setLocationRelativeTo(null);
+                this.setVisible(false);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Registrado_Admin.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(Registrado_Admin.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 

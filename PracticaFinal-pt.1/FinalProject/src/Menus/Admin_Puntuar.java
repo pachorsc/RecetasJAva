@@ -162,6 +162,11 @@ public class Admin_Puntuar extends javax.swing.JFrame {
                 }else {
                     Puntuacion_dar.hide();
                     jButton8.hide();
+                    String receta_usu = "";
+                    ResultSet pun = BD.datos(BD.select("cod","recetas")+BD.select_condicion("nombre",FinalProject.getRece().getNombre()));
+                    pun.next();
+                    receta_usu=Sesion.getCod(Sesion.getNom())+", "+pun.getString(1)+", "+Puntuacion_dar.getText();
+                    BD.basedatos(BD.insertar("puntuaciones (usuario, receta, nota)",receta_usu));
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Invalid integer input");
@@ -169,6 +174,10 @@ public class Admin_Puntuar extends javax.swing.JFrame {
                     "Ha puesto letras en la puntuacion",
                     "Error",
                     JOptionPane.ERROR_MESSAGE);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Admin_Puntuar.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(Admin_Puntuar.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 

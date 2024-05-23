@@ -68,7 +68,10 @@ public class BD {
         String consu = "insert into RECETAS (nombre, pasos, autor) values ('"+ nombre +"', '"+ pasos +"','"+autor+"')";
         return consu;
     }
-    
+    static public String insertar(String tabla ,String values){
+      String consu = "insert into "+tabla+"  values ("+values+")";
+      return consu;
+    }
     //SELECT
     static public String select(String select, String tabla){
         String consu = "select "+select+" from "+tabla;
