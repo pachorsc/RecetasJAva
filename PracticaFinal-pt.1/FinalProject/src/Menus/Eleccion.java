@@ -38,14 +38,18 @@ public class Eleccion extends javax.swing.JFrame {
         ResultSet usu;
         
         do{//Se hace el llenado de la tabla con los datos que se obtienen  de la consulta
-            datos[2]="";
+            datos[2]="Sin puntuar"
             usu = BD.datos(BD.select_usu()+BD.select_condicion("cod", receta.getString(3)));
             puntuaciones= BD.datos(BD.select("count(*), sum(nota)","puntuaciones")+BD.select_condicion("receta", receta.getString(3)));
             puntuaciones.next();
             usu.next();
             datos[0] = receta.getString(2);
             datos[1] = usu.getString(2);
-            datos[2] += puntuaciones.getFloat(2)/ puntuaciones.getFloat(1);
+            if(puntuaciones!=null){
+                datos[2] = ""+ puntuaciones.getFloat(2)/ puntuaciones.getFloat(1);
+            }else{
+                
+            }
             model.addRow(datos);
         }while(receta.next());
         Tabla_Receta.setModel(model);
