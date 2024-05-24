@@ -7,6 +7,7 @@ package Menus;
 import java.sql.*;
 import finalproject.BD;
 import finalproject.FinalProject;
+import finalproject.Receta;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -251,7 +252,10 @@ public class Eleccion extends javax.swing.JFrame {
                 "ERROR",
                 JOptionPane.ERROR_MESSAGE);
         } else {
-            
+            Receta a = new Receta(Tabla_Receta.getValueAt(Tabla_Receta.getSelectedRow(),0).toString(),
+                        Tabla_Receta.getValueAt(Tabla_Receta.getSelectedRow(),1).toString(),
+                        Tabla_Receta.getValueAt(Tabla_Receta.getSelectedRow(),2).toString());
+                FinalProject.setRece(a);
             Ver_Receta V1 = new Ver_Receta();
             V1.setVisible(true);
             V1.setLocationRelativeTo(null);

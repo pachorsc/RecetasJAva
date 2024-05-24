@@ -4,7 +4,9 @@
  */
 package Menus;
 
+import finalproject.BD;
 import finalproject.FinalProject;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,10 +20,12 @@ public class Ver_Receta extends javax.swing.JFrame {
     /**
      * Creates new form Ver_Receta
      */
-    public Ver_Receta() {
+    public Ver_Receta() throws ClassNotFoundException, SQLException {
         initComponents();
          jLabel1.setText(FinalProject.getRece().getNombre());
-         Texto_Receta.setText(FinalProject.getRece().getPasos());
+         ResultSet rece = BD.datos(BD.select("pasos", "recetas")+BD.select_condicion("nombre",FinalProject.getRece().getNombre()));
+        rece.next();
+        Texto_Receta.setText(rece.getString(1));
     }
    
     /**

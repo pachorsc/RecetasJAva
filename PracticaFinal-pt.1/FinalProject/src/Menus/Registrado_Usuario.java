@@ -1,6 +1,8 @@
 package Menus;
 
 import finalproject.BD;
+import finalproject.FinalProject;
+import finalproject.Receta;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -257,7 +259,10 @@ public class Registrado_Usuario extends javax.swing.JFrame {
                     JOptionPane.ERROR_MESSAGE);
         } else {
             try {
-                
+                Receta a = new Receta(Tabla_Receta.getValueAt(Tabla_Receta.getSelectedRow(),0).toString(),
+                        Tabla_Receta.getValueAt(Tabla_Receta.getSelectedRow(),1).toString(),
+                        Tabla_Receta.getValueAt(Tabla_Receta.getSelectedRow(),2).toString());
+                FinalProject.setRece(a);
                 Registrado_Puntuar V1 = new Registrado_Puntuar();
                 V1.setVisible(true);
                 V1.setLocationRelativeTo(null);

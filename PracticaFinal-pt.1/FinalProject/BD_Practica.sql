@@ -35,7 +35,6 @@ CREATE TABLE PUNTUACIONES (
     usuario integer,
     receta integer,
     nota number(2,0) check(nota between 0 and 10) not null,
-    comentario varchar2(100),
     CONSTRAINT pk_punt primary key (usuario, receta),
     CONSTRAINT fk_pun_rec foreign key (receta) references recetas(cod),
     CONSTRAINT fk_pun_usu foreign key (usuario) references usuarios(cod)
@@ -60,12 +59,12 @@ insert into ETIQUETAS (nombre) values ('Carne');
 insert into ETIQUETAS (nombre) values ('Vegetariano');
 insert into ETIQUETAS (nombre) values ('Sano');
 
-insert into PUNTUACIONES values (1, 1, 10, 'Buenisima');
-insert into PUNTUACIONES values (1, 2, 2, 'Vaya mierda');
-insert into PUNTUACIONES values (1, 3, 1, 'Vaya mierda');
-insert into PUNTUACIONES values (2, 1, 1, 'Vaya mierda');
-insert into PUNTUACIONES values (2, 2, 10, 'Buenisima');
-insert into PUNTUACIONES values (2, 3, 10, 'Buenisima');
+insert into PUNTUACIONES values (1, 1, 10);
+insert into PUNTUACIONES values (1, 2, 2);
+insert into PUNTUACIONES values (1, 3, 1);
+insert into PUNTUACIONES values (2, 1, 1);
+insert into PUNTUACIONES values (2, 2, 10);
+insert into PUNTUACIONES values (2, 3, 10);
 
 insert into RECETA_ETIQUETA values (1, 'Desayuno');
 insert into RECETA_ETIQUETA values (1, 'Salado');
