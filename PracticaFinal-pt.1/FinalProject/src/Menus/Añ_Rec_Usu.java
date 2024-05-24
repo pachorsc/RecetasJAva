@@ -135,7 +135,7 @@ public class Añ_Rec_Usu extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         try {
-            Registrado_Usuario V3 = new Registrado_Usuario(Sesion.getNom());
+            Registrado_Usuario V3 = new Registrado_Usuario();
             V3.setVisible(true);
             V3.setLocationRelativeTo(null);
             this.setVisible(false);
@@ -159,7 +159,7 @@ public class Añ_Rec_Usu extends javax.swing.JFrame {
         else {
             try {
                 BD.basedatos(BD.insertar_rece(nuevoNom, receta, Sesion.getCod(Sesion.getNom())));
-                Resetas_Usuario V4 = new Resetas_Usuario(nuevoNom);
+                Resetas_Usuario V4 = new Resetas_Usuario();
                 V4.setVisible(true);
                 V4.setLocationRelativeTo(null);
                 this.setVisible(false);

@@ -162,7 +162,7 @@ public class Editar_Datos_Usu extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         try {
-            Resetas_Usuario V3 = new Resetas_Usuario(Sesion.getNom());
+            Resetas_Usuario V3 = new Resetas_Usuario();
             V3.setVisible(true);
             V3.setLocationRelativeTo(null);
             this.setVisible(false);
@@ -198,6 +198,11 @@ public class Editar_Datos_Usu extends javax.swing.JFrame {
             BD.basedatos(BD.update("usuarios", "nombre", usuario, Sesion.getNom()));
             if (contraseña.equals(contraseña2)){
                 BD.basedatos(BD.update("usuarios", "contraseña", Sesion.getNom(), Sesion.getNom()));
+                Resetas_Usuario V4 = new Resetas_Usuario();
+                V4.setVisible(true);
+                V4.setLocationRelativeTo(null);
+                this.setVisible(false);
+                
             } else {
                 JOptionPane.showMessageDialog(this, 
                         "contraseñas no coinciden",

@@ -216,7 +216,7 @@ public class Iniciar_Se extends javax.swing.JFrame {
                             V2.setLocationRelativeTo(null);
                             this.setVisible(false);
                         } else {
-                        Registrado_Usuario V1 = new Registrado_Usuario(nU);
+                        Registrado_Usuario V1 = new Registrado_Usuario();
                         V1.setVisible(true);
                         V1.setLocationRelativeTo(null);
                         this.setVisible(false);

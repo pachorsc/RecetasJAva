@@ -161,7 +161,7 @@ public class Admin_CambiarRecetea extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         try {
-            Registrado_Usuario V3 = new Registrado_Usuario("a");
+            Registrado_Usuario V3 = new Registrado_Usuario();
             V3.setVisible(true);
             V3.setLocationRelativeTo(null);
             this.setVisible(false);

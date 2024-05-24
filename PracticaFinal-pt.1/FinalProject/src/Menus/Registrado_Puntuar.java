@@ -151,7 +151,7 @@ public class Registrado_Puntuar extends javax.swing.JFrame {
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         Registrado_Usuario V3 = null;
         try {
-            V3 = new Registrado_Usuario(Sesion.getNom());
+            V3 = new Registrado_Usuario();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Registrado_Puntuar.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {

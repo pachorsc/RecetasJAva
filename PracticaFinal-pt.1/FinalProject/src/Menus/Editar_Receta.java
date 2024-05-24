@@ -148,7 +148,7 @@ public class Editar_Receta extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         try {
-            Registrado_Usuario V3 = new Registrado_Usuario(Sesion.getNom());
+            Registrado_Usuario V3 = new Registrado_Usuario();
             V3.setVisible(true);
             V3.setLocationRelativeTo(null);
             this.setVisible(false);
@@ -175,7 +175,7 @@ public class Editar_Receta extends javax.swing.JFrame {
                 BD.basedatos(BD.update("recetas", "NOMBRE", nuevoNom , FinalProject.getRece().getPasos()));
                 BD.basedatos(BD.update("recetas", "pasos", receta , FinalProject.getRece().getPasos()));
 
-                Resetas_Usuario V4 = new Resetas_Usuario(Sesion.getNom());
+                Resetas_Usuario V4 = new Resetas_Usuario();
                 V4.setVisible(true);
                 V4.setLocationRelativeTo(null);
                 this.setVisible(false);

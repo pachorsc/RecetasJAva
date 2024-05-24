@@ -20,11 +20,10 @@ public class Registrado_Usuario extends javax.swing.JFrame {
      * Creates new form Registrado_Usuario
      */
     
-    public Registrado_Usuario(String nom) throws ClassNotFoundException, SQLException {
+    public Registrado_Usuario() throws ClassNotFoundException, SQLException {
         initComponents();
         BD.Conectar();
         
-        Sesion.setNomUsu(nom);
         model.addColumn("Nombre");
         model.addColumn("autor");
         model.addColumn("puntuacion");
@@ -278,7 +277,7 @@ public class Registrado_Usuario extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
-            Resetas_Usuario V1 = new Resetas_Usuario(Sesion.getNom());
+            Resetas_Usuario V1 = new Resetas_Usuario();
             V1.setVisible(true);
             V1.setLocationRelativeTo(null);
             this.setVisible(false);

@@ -24,7 +24,7 @@ public class Resetas_Usuario extends javax.swing.JFrame {
      * Creates new form Resetas_Usuario
      */
     
-    public Resetas_Usuario(String nom) throws ClassNotFoundException, SQLException {
+    public Resetas_Usuario() throws ClassNotFoundException, SQLException {
         initComponents();
         jLabel1.setText(Sesion.getNom());
         BD.Conectar();
@@ -200,7 +200,7 @@ public class Resetas_Usuario extends javax.swing.JFrame {
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         Registrado_Usuario V3 = null;
         try {
-            V3 = new Registrado_Usuario(Sesion.getNom());
+            V3 = new Registrado_Usuario();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Resetas_Usuario.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {

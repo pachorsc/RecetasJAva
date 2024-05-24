@@ -204,6 +204,7 @@ public class Registro extends javax.swing.JFrame {
                     //meter en la base de datos 
                     
                         BD.basedatos(BD.insertar_usu(usuario, contraseña));
+                        Sesion.setNomUsu(usuario);
                         
                         //llenar el objeto de uuario
 
@@ -212,7 +213,7 @@ public class Registro extends javax.swing.JFrame {
                     } catch (SQLException ex) {
                         Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    Registrado_Usuario V1 = new Registrado_Usuario(usuario);
+                    Registrado_Usuario V1 = new Registrado_Usuario();
                     V1.setVisible(true);
                     V1.setLocationRelativeTo(null);
                     this.setVisible(false);
