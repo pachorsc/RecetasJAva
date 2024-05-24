@@ -24,6 +24,8 @@ public class Registrado_Usuario extends javax.swing.JFrame {
         initComponents();
         BD.Conectar();
         
+        jButton2.setText(Sesion.getNom());
+        
         model.addColumn("Nombre");
         model.addColumn("autor");
         model.addColumn("puntuacion");
