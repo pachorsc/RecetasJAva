@@ -252,14 +252,20 @@ public class Eleccion extends javax.swing.JFrame {
                 "ERROR",
                 JOptionPane.ERROR_MESSAGE);
         } else {
-            Receta a = new Receta(Tabla_Receta.getValueAt(Tabla_Receta.getSelectedRow(),0).toString(),
+            try {
+                Receta a = new Receta(Tabla_Receta.getValueAt(Tabla_Receta.getSelectedRow(),0).toString(),
                         Tabla_Receta.getValueAt(Tabla_Receta.getSelectedRow(),1).toString(),
                         Tabla_Receta.getValueAt(Tabla_Receta.getSelectedRow(),2).toString());
                 FinalProject.setRece(a);
-            Ver_Receta V1 = new Ver_Receta();
-            V1.setVisible(true);
-            V1.setLocationRelativeTo(null);
-            this.setVisible(false);
+                Ver_Receta V1 = new Ver_Receta();
+                V1.setVisible(true);
+                V1.setLocationRelativeTo(null);
+                this.setVisible(false);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Eleccion.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(Eleccion.class.getName()).log(Level.SEVERE, null, ex);
+            }
             
             
         }
