@@ -307,7 +307,7 @@ public class Registrado_Usuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        Añadir_Receta_Admin V1 = new Añadir_Receta_Admin();
+        Añ_Rec_Usu V1 = new Añ_Rec_Usu();
         V1.setVisible(true);
         V1.setLocationRelativeTo(null);
         this.setVisible(false);
