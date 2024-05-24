@@ -31,9 +31,15 @@ public class Admin_Puntuar extends javax.swing.JFrame {
         
         ResultSet pun = BD.datos(BD.select("cod","recetas")+BD.select_condicion("nombre",FinalProject.getRece().getNombre()));
         pun.next();
-        if (BD.coincide(BD.select("count(*)","puntuaciones")+BD.select_condicion("receta",pun.getString(1))+BD.select_condicion_and("usuario",Sesion.getCod(Sesion.getNom())))) {
+        ResultSet ex = BD.datos(BD.select("count(*)","puntuaciones")+BD.select_condicion("receta",pun.getString(1))+BD.select_condicion_and("usuario",Sesion.getCod(Sesion.getNom()))) ;
+        ex.next();
+        if (ex.getInt(1) >0) {
             Puntuacion_dar.hide();
-            jButton8.hide();               
+            jButton8.hide();   
+            System.out.println("no sale");      
+            System.out.println(Sesion.getCod(Sesion.getNom()));
+            System.out.println(pun.getString(1));
+            System.out.println(BD.coincide(BD.select("count(*)","puntuaciones")+BD.select_condicion("receta",pun.getString(1))+BD.select_condicion_and("usuario",Sesion.getCod(Sesion.getNom()))));
         }
     }
 
