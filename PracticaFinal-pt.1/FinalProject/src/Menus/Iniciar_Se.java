@@ -5,8 +5,7 @@
 package Menus;
 
 import finalproject.BD;
-import finalproject.FinalProject;
-import finalproject.Usuario;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;

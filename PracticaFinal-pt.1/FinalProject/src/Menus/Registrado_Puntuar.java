@@ -193,7 +193,7 @@ public class Registrado_Puntuar extends javax.swing.JFrame {
                     String receta_usu = "";
                     ResultSet pun = BD.datos(BD.select("cod","recetas")+BD.select_condicion("nombre",FinalProject.getRece().getNombre()));
                     pun.next();
-                    receta_usu=Sesion.getCod(Sesion.getCod(Sesion.getNom()))+", "+pun.getString(1)+", "+Puntuacion_dar.getText();
+                    receta_usu=Sesion.getCod(Sesion.getNom())+", "+pun.getString(1)+", "+Puntuacion_dar.getText();
                     BD.basedatos(BD.insertar("puntuaciones (usuario, receta, nota)",receta_usu));
                 }
             } catch (NumberFormatException e) {

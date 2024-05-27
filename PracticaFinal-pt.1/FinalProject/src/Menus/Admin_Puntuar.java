@@ -177,8 +177,13 @@ public class Admin_Puntuar extends javax.swing.JFrame {
                     String receta_usu = "";
                     ResultSet pun = BD.datos(BD.select("cod","recetas")+BD.select_condicion("nombre",FinalProject.getRece().getNombre()));
                     pun.next();
-                    receta_usu=Sesion.getCod(Sesion.getCod(Sesion.getNom()))+", "+pun.getString(1)+", "+Puntuacion_dar.getText();
+                    receta_usu=Sesion.getCod(Sesion.getNom())+", "+pun.getString(1)+", "+Puntuacion_dar.getText();
                     BD.basedatos(BD.insertar("puntuaciones (usuario, receta, nota)",receta_usu));
+                    
+                    Registrado_Admin V2 = new Registrado_Admin();
+                    V2.setVisible(true);
+                    V2.setLocationRelativeTo(null);
+                    this.setVisible(false);
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Invalid integer input");

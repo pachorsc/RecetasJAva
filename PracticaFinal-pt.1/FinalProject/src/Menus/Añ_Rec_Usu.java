@@ -248,6 +248,7 @@ public class Añ_Rec_Usu extends javax.swing.JFrame {
                 BD.basedatos(BD.insertar_rece(nuevoNom, receta, Sesion.getCod(Sesion.getNom())));
                 
                 ResultSet rs = BD.datos(BD.select_receta()+BD.select_condicion( "nombre", nuevoNom) );
+                rs.next();
                 for (int i = 0; i < 8; i++) {
                     if ( btLst[i].isSelected()) {
                         BD.basedatos(BD.insertar("Receta_Etiqueta" ,rs.getString(1)  +", '"+btLst[i].getText()+"'" ));

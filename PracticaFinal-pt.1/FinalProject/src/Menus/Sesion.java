@@ -31,7 +31,7 @@ public class Sesion {
     }
     
     public static String getCod(String nombre) throws ClassNotFoundException, SQLException{
-        ResultSet rs=BD.datos(BD.select_usu()+ BD.select_condicion("nombre", nombre));
+        ResultSet rs= BD.datos(BD.select_usu()+ BD.select_condicion("nombre", nombre));
         rs.next();
         cod=rs.getString(1);
         return cod;

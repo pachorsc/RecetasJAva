@@ -198,6 +198,7 @@ public class Editar_Datos_Usu extends javax.swing.JFrame {
             BD.basedatos(BD.update("usuarios", "nombre", usuario, Sesion.getNom()));
             if (contraseña.equals(contraseña2)){
                 BD.basedatos(BD.update("usuarios", "contraseña", Sesion.getNom(), Sesion.getNom()));
+                Sesion.setNomUsu(usuario);
                 Resetas_Usuario V4 = new Resetas_Usuario();
                 V4.setVisible(true);
                 V4.setLocationRelativeTo(null);
