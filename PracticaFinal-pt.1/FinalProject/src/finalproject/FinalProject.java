@@ -10,7 +10,7 @@ public class FinalProject {
     static Receta rece;
 
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
-        
+        Sesion.setNomUsu("null");
         
         Eleccion menu_prin = new Eleccion();
         menu_prin.setVisible(true);

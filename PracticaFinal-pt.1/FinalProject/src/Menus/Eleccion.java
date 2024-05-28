@@ -80,7 +80,6 @@ public class Eleccion extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         Tabla_Receta = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
@@ -126,13 +125,6 @@ public class Eleccion extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setText("Nombre receta");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-
         Tabla_Receta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -162,9 +154,7 @@ public class Eleccion extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(168, 168, 168)
+                        .addGap(330, 330, 330)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(Ir_Menu_InicioSes, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
@@ -189,10 +179,8 @@ public class Eleccion extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addGap(49, 49, 49)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(50, 50, 50)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -244,43 +232,15 @@ public class Eleccion extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
-            jTextField1.getText();
-            initComponents();
-            BD.Conectar();
-            model.addColumn("Nombre");
-            model.addColumn("autor");
-            model.addColumn("Puntuación");
-            Tabla_Receta.setModel(model);
-            
-            String datos[] = new String[3];
-            
-            ResultSet receta = BD.datos(BD.select_receta());
-            receta.next();
-            ResultSet puntuaciones;
-            ResultSet usu;
-            
-            do{//Se hace el llenado de la tabla con los datos que se obtienen  de la consulta
-                datos[2]="Sin puntuar";
-                usu = BD.datos(BD.select_usu()+BD.select_condicion("cod", receta.getString(3)));
-                puntuaciones= BD.datos(BD.select("count(*), sum(nota)","puntuaciones")+BD.select_condicion("receta", receta.getString(1))+BD.select_condicion("nombre", "%"+receta.getString(1)));
-                puntuaciones.next();
-                usu.next();
-                datos[0] = receta.getString(2);
-                datos[1] = usu.getString(2);
-                if(puntuaciones.getFloat(1)!=0){
-                    datos[2] = ""+ puntuaciones.getFloat(2)/ puntuaciones.getFloat(1);
-                }
-                model.addRow(datos);
-            }while(receta.next());
-            Tabla_Receta.setModel(model);
-            Tabla_Receta.setCellSelectionEnabled(false);
-            Tabla_Receta.setRowSelectionAllowed(true);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Eleccion.class.getName()).log(Level.SEVERE, null, ex);
+            Busqueda V = new Busqueda();
+            V.setVisible(true);
+            V.setLocationRelativeTo(null);        
+            this.setVisible(false);
         } catch (SQLException ex) {
             Logger.getLogger(Eleccion.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Eleccion.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -309,10 +269,6 @@ public class Eleccion extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -366,6 +322,5 @@ public class Eleccion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
