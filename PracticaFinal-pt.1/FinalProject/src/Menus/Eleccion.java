@@ -111,7 +111,7 @@ public class Eleccion extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 252, 236));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.setForeground(new java.awt.Color(242, 239, 228));
+        jPanel1.setForeground(new java.awt.Color(255, 252, 236));
         jPanel1.setToolTipText("");
         jPanel1.setMaximumSize(new java.awt.Dimension(1240, 713));
         jPanel1.setMinimumSize(new java.awt.Dimension(1240, 713));
@@ -154,6 +154,7 @@ public class Eleccion extends javax.swing.JFrame {
             }
         });
 
+        Tabla_Receta.setForeground(new java.awt.Color(255, 252, 236));
         Tabla_Receta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -163,6 +164,7 @@ public class Eleccion extends javax.swing.JFrame {
             }
         ));
         Tabla_Receta.setColumnSelectionAllowed(true);
+        Tabla_Receta.setGridColor(new java.awt.Color(0, 0, 0));
         jScrollPane2.setViewportView(Tabla_Receta);
         Tabla_Receta.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 

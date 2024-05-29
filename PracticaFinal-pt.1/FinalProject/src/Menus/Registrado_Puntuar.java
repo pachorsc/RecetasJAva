@@ -60,10 +60,10 @@ public class Registrado_Puntuar extends javax.swing.JFrame {
         jButton8 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(718, 599));
         setMinimumSize(new java.awt.Dimension(718, 599));
         setResizable(false);
 
+        jPanel1.setBackground(new java.awt.Color(255, 252, 236));
         jPanel1.setMaximumSize(new java.awt.Dimension(718, 599));
         jPanel1.setMinimumSize(new java.awt.Dimension(718, 599));
         jPanel1.setPreferredSize(new java.awt.Dimension(718, 599));
@@ -74,6 +74,7 @@ public class Registrado_Puntuar extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(Texto_Receta);
 
+        jButton7.setBackground(new java.awt.Color(217, 187, 169));
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/home.png"))); // NOI18N
         jButton7.setText("Volver");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -90,6 +91,7 @@ public class Registrado_Puntuar extends javax.swing.JFrame {
             }
         });
 
+        jButton8.setBackground(new java.awt.Color(217, 187, 169));
         jButton8.setText("Puntuar");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
