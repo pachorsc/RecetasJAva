@@ -109,8 +109,10 @@ public class Eleccion extends javax.swing.JFrame {
         setResizable(false);
         setSize(new java.awt.Dimension(1240, 713));
 
+        jPanel1.setBackground(new java.awt.Color(255, 252, 236));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.setForeground(new java.awt.Color(60, 63, 65));
+        jPanel1.setForeground(new java.awt.Color(242, 239, 228));
+        jPanel1.setToolTipText("");
         jPanel1.setMaximumSize(new java.awt.Dimension(1240, 713));
         jPanel1.setMinimumSize(new java.awt.Dimension(1240, 713));
 

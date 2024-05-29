@@ -30,19 +30,26 @@ public class Resetas_Usuario extends javax.swing.JFrame {
         BD.Conectar();
         if(BD.coincide(BD.select_receta()+BD.select_condicion("autor", Sesion.getCod(Sesion.getNom())))){
             model.addColumn("Nombre");
-            model.addColumn("ingredientes");
+            model.addColumn("Etiquetas");
             model.addColumn("pasos");
             Tabla_Receta.setModel(model);
 
             //limite del estring es el count de la recetas totales
             String datos[] = new String[3];
-
-            System.out.println(Sesion.getCod(Sesion.getNom()));    
+    
             ResultSet receta = BD.datos(BD.select_receta()+BD.select_condicion("autor", Sesion.getCod(Sesion.getNom())));
             receta.next();
             do{//Se hace el llenado de la tabla con los datos que se obtienen  de la consulta
+                 ResultSet eti = BD.datos(BD.select("etiqueta", "RECETA_ETIQUETA")+BD.select_condicion("receta", receta.getString(1)));
+            String textEti = "";
+            
+            while(eti.next()){
+                textEti += eti.getString(1)+", ";
+                
+            }
+            textEti = textEti.substring(0, textEti.length()-2);
                 datos[0] = receta.getString(2);
-                datos[1] = receta.getString(4);
+                datos[1] = textEti.toLowerCase();
                 datos[2] = receta.getString(5);
                 model.addRow(datos);
             }while(receta.next());
