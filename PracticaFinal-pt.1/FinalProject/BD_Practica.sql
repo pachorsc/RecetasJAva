@@ -44,11 +44,11 @@ insert into USUARIOS (nombre, contraseña, rol) values ('ADMIN', 'ADMIN', 1);
 insert into USUARIOS (nombre, contraseña) values ('pacho', 'pacho');
 insert into USUARIOS (nombre, contraseña) values ('dani', 'dani');
 
-insert into recetas (nombre, autor , ingredientes, pasos) values('huevo frito', 1, 'huevo, aceite, oregano y pimienta', 'romper el huevo y freirlo en la sarten, posteriormente condimentar');
-insert into recetas (nombre, autor , ingredientes, pasos) values('Galletas de chocolate', 1, 'huevo, miel, harina, mantequilla y chocolate', 'Bate los huevos con la harina y la mantequilla, añade el chocolate y mete en el horno 10 minutos');
-insert into recetas (nombre, autor , ingredientes, pasos) values('Tortitas', 2, 'harina, huevo, aceite, mantequilla y leche', 'Batir todo y llevar a la sarten');
-insert into recetas (nombre, autor , ingredientes, pasos) values('Pavo en salsa de la abuela', 2, 'pavo, cebolla, tomate, pimiento, oregano, pimenton', 'cortar las verduras y sofreir, añadir el pollo y el tomate');
-insert into recetas (nombre, autor , ingredientes, pasos) values('Arroz con pollo', 3, 'Arroz y pollo', 'hacer el arroz y el pollo');
+insert into recetas (nombre, autor , pasos) values('huevo frito', 1, 'romper el huevo y freirlo en la sarten, posteriormente condimentar');
+insert into recetas (nombre, autor , pasos) values('galletas de chocolate', 1, 'bate los huevos con la harina y la mantequilla, añade el chocolate y mete en el horno 10 minutos');
+insert into recetas (nombre, autor , pasos) values('tortitas', 2, 'batir todo y llevar a la sarten');
+insert into recetas (nombre, autor , pasos) values('pavo en salsa de la abuela', 2, 'cortar las verduras y sofreir, añadir el pollo y el tomate');
+insert into recetas (nombre, autor , pasos) values('arroz con pollo', 3, 'hacer el arroz y el pollo');
 
 insert into ETIQUETAS (nombre) values ('Desayuno');
 insert into ETIQUETAS (nombre) values ('Almuerzo');
