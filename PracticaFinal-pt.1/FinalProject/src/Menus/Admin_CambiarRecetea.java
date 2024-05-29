@@ -55,14 +55,15 @@ public class Admin_CambiarRecetea extends javax.swing.JFrame {
         });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(718, 599));
         setMinimumSize(new java.awt.Dimension(718, 599));
         setResizable(false);
 
+        jPanel1.setBackground(new java.awt.Color(255, 252, 236));
         jPanel1.setMaximumSize(new java.awt.Dimension(718, 599));
         jPanel1.setMinimumSize(new java.awt.Dimension(718, 599));
         jPanel1.setPreferredSize(new java.awt.Dimension(718, 599));
 
+        jButton8.setBackground(new java.awt.Color(217, 187, 169));
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/home.png"))); // NOI18N
         jButton8.setText("Volver");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
@@ -81,6 +82,7 @@ public class Admin_CambiarRecetea extends javax.swing.JFrame {
         Cambio_recet.setRows(5);
         jScrollPane1.setViewportView(Cambio_recet);
 
+        jButton1.setBackground(new java.awt.Color(217, 187, 169));
         jButton1.setText("Cambiar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,7 +136,7 @@ public class Admin_CambiarRecetea extends javax.swing.JFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(174, Short.MAX_VALUE))
+                .addContainerGap(178, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

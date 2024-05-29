@@ -44,8 +44,10 @@ public class Editar_Datos_Usu extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(217, 187, 169));
         setMinimumSize(new java.awt.Dimension(1240, 713));
 
+        jPanel1.setBackground(new java.awt.Color(255, 252, 236));
         jPanel1.setMaximumSize(new java.awt.Dimension(1240, 713));
         jPanel1.setMinimumSize(new java.awt.Dimension(1240, 713));
 
@@ -64,11 +66,21 @@ public class Editar_Datos_Usu extends javax.swing.JFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Repetir Contraseña");
 
+        Boton_Registrarse.setBackground(new java.awt.Color(217, 187, 169));
         Boton_Registrarse.setText("Cambiar");
         Boton_Registrarse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Boton_Registrarse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Boton_RegistrarseActionPerformed(evt);
+            }
+        });
+
+        jButton7.setBackground(new java.awt.Color(217, 187, 169));
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/home.png"))); // NOI18N
+        jButton7.setText("Volver");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
             }
         });
 
@@ -92,13 +104,18 @@ public class Editar_Datos_Usu extends javax.swing.JFrame {
                             .addComponent(Boton_Registrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(492, 492, 492)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(362, 506, Short.MAX_VALUE))
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(jButton7)))
+                .addGap(362, 712, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(125, 125, 125)
+                .addGap(21, 21, 21)
+                .addComponent(jButton7)
+                .addGap(33, 33, 33)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -117,35 +134,15 @@ public class Editar_Datos_Usu extends javax.swing.JFrame {
                 .addGap(313, 313, 313))
         );
 
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/home.png"))); // NOI18N
-        jButton7.setText("Volver");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton7)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -165,7 +162,7 @@ public class Editar_Datos_Usu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void Boton_RegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_RegistrarseActionPerformed
-        try {                                                  
+        try {
             String usuario = Text_Usu.getText();
             String contraseña = Text_cont.getText();
             String contraseña2 = Text_Cont2.getText();
@@ -175,33 +172,32 @@ public class Editar_Datos_Usu extends javax.swing.JFrame {
                 //si al registrarse algun espacio está vacio entonces saldrá un error
                 if (usuario.isEmpty() || contraseña.isEmpty() || contraseña2.isEmpty()) {
                     JOptionPane.showMessageDialog(this,
-                            "Algun espacio está vacio",
-                            "Error",
-                            JOptionPane.ERROR_MESSAGE);
+                        "Algun espacio está vacio",
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE);
                 }
-                
+
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(Editar_Datos_Usu.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
                 Logger.getLogger(Editar_Datos_Usu.class.getName()).log(Level.SEVERE, null, ex);
-            }            
-            
-            
+            }
+
             if (contraseña.equals(contraseña2)){
                 BD.basedatos(BD.update("usuarios", "nombre", usuario, Sesion.getNom()));
                 Sesion.setNomUsu(usuario);
-                
+
                 BD.basedatos("UPDATE USUARIOs SET CONTRASEÑA = '"+contraseña+"' where nombre = '"+usuario+"'");
-                
+
                 Resetas_Usuario V4 = new Resetas_Usuario();
                 V4.setVisible(true);
                 V4.setLocationRelativeTo(null);
                 this.setVisible(false);
-                
+
             } else {
-                JOptionPane.showMessageDialog(this, 
-                        "contraseñas no coinciden",
-                        "Error",
+                JOptionPane.showMessageDialog(this,
+                    "contraseñas no coinciden",
+                    "Error",
                     JOptionPane.ERROR_MESSAGE);
             }
             BD.basedatos(BD.update("usuarios", "contraseña", contraseña, Sesion.getNom()));

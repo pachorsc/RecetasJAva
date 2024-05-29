@@ -54,10 +54,12 @@ public class Añ_Rec_Usu extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(805, 600));
         setResizable(false);
 
+        jPanel1.setBackground(new java.awt.Color(255, 252, 236));
         jPanel1.setMaximumSize(new java.awt.Dimension(1240, 713));
         jPanel1.setMinimumSize(new java.awt.Dimension(1240, 713));
         jPanel1.setPreferredSize(new java.awt.Dimension(1240, 713));
 
+        jButton7.setBackground(new java.awt.Color(217, 187, 169));
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/home.png"))); // NOI18N
         jButton7.setText("Volver");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -77,6 +79,7 @@ public class Añ_Rec_Usu extends javax.swing.JFrame {
         Cambio_recet.setRows(5);
         jScrollPane1.setViewportView(Cambio_recet);
 
+        jButton1.setBackground(new java.awt.Color(217, 187, 169));
         jButton1.setText("Añadir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,16 +87,22 @@ public class Añ_Rec_Usu extends javax.swing.JFrame {
             }
         });
 
+        jRadioButton7.setBackground(new java.awt.Color(255, 252, 236));
         jRadioButton7.setText("Vegetariano");
 
+        jRadioButton1.setBackground(new java.awt.Color(255, 252, 236));
         jRadioButton1.setText("Desayuno");
 
+        jRadioButton2.setBackground(new java.awt.Color(255, 252, 236));
         jRadioButton2.setText("Almuerzo");
 
+        jRadioButton3.setBackground(new java.awt.Color(255, 252, 236));
         jRadioButton3.setText("Cena");
 
+        jRadioButton4.setBackground(new java.awt.Color(255, 252, 236));
         jRadioButton4.setText("Dulce");
 
+        jRadioButton6.setBackground(new java.awt.Color(255, 252, 236));
         jRadioButton6.setText("Salado");
         jRadioButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,8 +110,10 @@ public class Añ_Rec_Usu extends javax.swing.JFrame {
             }
         });
 
+        jRadioButton5.setBackground(new java.awt.Color(255, 252, 236));
         jRadioButton5.setText("Carne");
 
+        jRadioButton8.setBackground(new java.awt.Color(255, 252, 236));
         jRadioButton8.setText("Sano");
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
