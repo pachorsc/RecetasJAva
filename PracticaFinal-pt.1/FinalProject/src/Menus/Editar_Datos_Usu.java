@@ -186,10 +186,13 @@ public class Editar_Datos_Usu extends javax.swing.JFrame {
                 Logger.getLogger(Editar_Datos_Usu.class.getName()).log(Level.SEVERE, null, ex);
             }            
             
-            BD.basedatos(BD.update("usuarios", "nombre", usuario, Sesion.getNom()));
+            
             if (contraseña.equals(contraseña2)){
-                BD.basedatos(BD.update("usuarios", "contraseña", Sesion.getNom(), Sesion.getNom()));
+                BD.basedatos(BD.update("usuarios", "nombre", usuario, Sesion.getNom()));
                 Sesion.setNomUsu(usuario);
+                
+                BD.basedatos("UPDATE USUARIOs SET CONTRASEÑA = '"+contraseña+"' where nombre = '"+usuario+"'");
+                
                 Resetas_Usuario V4 = new Resetas_Usuario();
                 V4.setVisible(true);
                 V4.setLocationRelativeTo(null);

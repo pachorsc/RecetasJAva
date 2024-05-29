@@ -33,10 +33,11 @@ public class Registrado_Admin extends javax.swing.JFrame {
         model.addColumn("Nombre");
         model.addColumn("autor");
         model.addColumn("Puntuación");
+        model.addColumn("Etiquetas");
         Tabla_Receta.setModel(model);
         
         //limite del estring es el count de la recetas totales
-        String datos[] = new String[3];
+        String datos[] = new String[4];
         //no llena porque no hay recetas
         
         ResultSet receta = BD.datos(BD.select_receta());
@@ -45,18 +46,32 @@ public class Registrado_Admin extends javax.swing.JFrame {
         ResultSet usu;
         
         do{//Se hace el llenado de la tabla con los datos que se obtienen  de la consulta
+            ResultSet eti = BD.datos(BD.select("etiqueta", "RECETA_ETIQUETA")+BD.select_condicion("receta", receta.getString(1)));
+            String textEti = "";
+            
+            while(eti.next()){
+                textEti += eti.getString(1)+", ";
+                
+            }
+            
+            textEti = textEti.substring(0, textEti.length()-2);
+            
             datos[2]="Sin puntuar";
             usu = BD.datos(BD.select_usu()+BD.select_condicion("cod", receta.getString(3)));
             puntuaciones= BD.datos(BD.select("count(*), sum(nota)","puntuaciones")+BD.select_condicion("receta", receta.getString(1)));
             puntuaciones.next();
             usu.next();
-            datos[0] = receta.getString(2);
-            datos[1] = usu.getString(2);
+            datos[0] = receta.getString(2).toLowerCase();
+            datos[1] = usu.getString(2).toLowerCase();
+            datos[3] = textEti.toLowerCase();
             if(puntuaciones.getFloat(1)!=0){
                 datos[2] = ""+ puntuaciones.getFloat(2)/ puntuaciones.getFloat(1);
             }
             model.addRow(datos);
         }while(receta.next());
+        Tabla_Receta.setModel(model);
+        Tabla_Receta.setCellSelectionEnabled(false);
+        Tabla_Receta.setRowSelectionAllowed(true);
        
     }
     DefaultTableModel model = new DefaultTableModel() {
@@ -313,7 +328,7 @@ public class Registrado_Admin extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(((DefaultTableModel) Tabla_Receta.getModel())); 
-    sorter.setRowFilter(RowFilter.regexFilter(jTextField1.getText()));
+    sorter.setRowFilter(RowFilter.regexFilter(jTextField1.getText().toLowerCase()));
 
     Tabla_Receta.setRowSorter(sorter);
     }//GEN-LAST:event_jButton2ActionPerformed

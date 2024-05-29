@@ -31,9 +31,10 @@ public class Eleccion extends javax.swing.JFrame {
         model.addColumn("Nombre");
         model.addColumn("autor");
         model.addColumn("Puntuación");
+        model.addColumn("Etiquetas");
         Tabla_Receta.setModel(model);
         
-        String datos[] = new String[3];
+        String datos[] = new String[4];
         
         ResultSet receta = BD.datos(BD.select_receta());
         receta.next();
@@ -41,13 +42,24 @@ public class Eleccion extends javax.swing.JFrame {
         ResultSet usu;
         
         do{//Se hace el llenado de la tabla con los datos que se obtienen  de la consulta
+            ResultSet eti = BD.datos(BD.select("etiqueta", "RECETA_ETIQUETA")+BD.select_condicion("receta", receta.getString(1)));
+            String textEti = "";
+            
+            while(eti.next()){
+                textEti += eti.getString(1)+", ";
+                
+            }
+            
+            textEti = textEti.substring(0, textEti.length()-2);
+            
             datos[2]="Sin puntuar";
             usu = BD.datos(BD.select_usu()+BD.select_condicion("cod", receta.getString(3)));
             puntuaciones= BD.datos(BD.select("count(*), sum(nota)","puntuaciones")+BD.select_condicion("receta", receta.getString(1)));
             puntuaciones.next();
             usu.next();
-            datos[0] = receta.getString(2);
-            datos[1] = usu.getString(2);
+            datos[0] = receta.getString(2).toLowerCase();
+            datos[1] = usu.getString(2).toLowerCase();
+            datos[3] = textEti.toLowerCase();
             if(puntuaciones.getFloat(1)!=0){
                 datos[2] = ""+ puntuaciones.getFloat(2)/ puntuaciones.getFloat(1);
             }
@@ -76,6 +88,7 @@ public class Eleccion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         Ir_Menu_InicioSes = new javax.swing.JButton();
@@ -87,6 +100,9 @@ public class Eleccion extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         Tabla_Receta = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
+
+        jRadioButtonMenuItem1.setSelected(true);
+        jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1240, 713));
@@ -247,7 +263,7 @@ public class Eleccion extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(((DefaultTableModel) Tabla_Receta.getModel())); 
-    sorter.setRowFilter(RowFilter.regexFilter(jTextField1.getText()));
+    sorter.setRowFilter(RowFilter.regexFilter(jTextField1.getText().toLowerCase()));
 
     Tabla_Receta.setRowSorter(sorter);
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -334,6 +350,7 @@ public class Eleccion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
