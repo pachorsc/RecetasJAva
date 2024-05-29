@@ -118,6 +118,7 @@ public class Eleccion extends javax.swing.JFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Logo.png"))); // NOI18N
 
+        Ir_Menu_InicioSes.setBackground(new java.awt.Color(217, 187, 169));
         Ir_Menu_InicioSes.setText("Iniciar Sesión");
         Ir_Menu_InicioSes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Ir_Menu_InicioSes.addActionListener(new java.awt.event.ActionListener() {
@@ -126,6 +127,7 @@ public class Eleccion extends javax.swing.JFrame {
             }
         });
 
+        Ir_Menu_Regis.setBackground(new java.awt.Color(217, 187, 169));
         Ir_Menu_Regis.setText("Registrarse");
         Ir_Menu_Regis.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Ir_Menu_Regis.addActionListener(new java.awt.event.ActionListener() {
@@ -138,6 +140,7 @@ public class Eleccion extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Registro.png"))); // NOI18N
 
+        jButton1.setBackground(new java.awt.Color(217, 187, 169));
         jButton1.setText("Buscar");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.setMaximumSize(new java.awt.Dimension(1260, 700));
@@ -154,7 +157,7 @@ public class Eleccion extends javax.swing.JFrame {
             }
         });
 
-        Tabla_Receta.setForeground(new java.awt.Color(255, 252, 236));
+        Tabla_Receta.setForeground(new java.awt.Color(0, 0, 0));
         Tabla_Receta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -168,6 +171,7 @@ public class Eleccion extends javax.swing.JFrame {
         jScrollPane2.setViewportView(Tabla_Receta);
         Tabla_Receta.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
+        jButton3.setBackground(new java.awt.Color(217, 187, 169));
         jButton3.setText("Seleccionar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

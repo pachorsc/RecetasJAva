@@ -24,7 +24,9 @@ public class Ver_Receta extends javax.swing.JFrame {
         initComponents();
          jLabel1.setText(FinalProject.getRece().getNombre());
          ResultSet rece = BD.datos(BD.select("pasos", "recetas")+BD.select_condicion("nombre",FinalProject.getRece().getNombre()));
-        rece.next();
+         System.out.println(FinalProject.getRece().getNombre());
+         rece.next();
+
         Texto_Receta.setText(rece.getString(1));
     }
    

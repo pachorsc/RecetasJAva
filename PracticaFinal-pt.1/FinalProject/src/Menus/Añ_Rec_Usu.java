@@ -224,8 +224,8 @@ public class Añ_Rec_Usu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String nuevoNom = Nuevo_Nom.getText();
-        String receta = Cambio_recet.getText();
+        String nuevoNom = Nuevo_Nom.getText().toLowerCase();
+        String receta = Cambio_recet.getText().toLowerCase();
 
                 JRadioButton[] btLst = {jRadioButton1, jRadioButton2, jRadioButton3, jRadioButton4, jRadioButton5, jRadioButton6, jRadioButton7, jRadioButton8};
 

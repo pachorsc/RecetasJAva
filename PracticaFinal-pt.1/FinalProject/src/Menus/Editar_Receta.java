@@ -140,8 +140,8 @@ public class Editar_Receta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String nuevoNom = Nuevo_Nom.getText();
-        String receta = Cambio_recet.getText();
+        String nuevoNom = Nuevo_Nom.getText().toLowerCase();
+        String receta = Cambio_recet.getText().toLowerCase();
 
         if (nuevoNom.isEmpty() || receta.isEmpty()) {
             JOptionPane.showMessageDialog(this,
